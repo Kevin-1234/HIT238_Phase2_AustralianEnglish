@@ -1,0 +1,26 @@
+{
+  "files": {
+    "app.js": "/HIT238_AustralianEnglish_Phase2/static/js/app.ac0fd66a.chunk.js",
+    "app.js.map": "/HIT238_AustralianEnglish_Phase2/static/js/app.ac0fd66a.chunk.js.map",
+    "runtime~app.js": "/HIT238_AustralianEnglish_Phase2/static/js/runtime~app.ed716ef1.js",
+    "runtime~app.js.map": "/HIT238_AustralianEnglish_Phase2/static/js/runtime~app.ed716ef1.js.map",
+    "static/js/2.dae1b8b6.chunk.js": "/HIT238_AustralianEnglish_Phase2/static/js/2.dae1b8b6.chunk.js",
+    "static/js/2.dae1b8b6.chunk.js.map": "/HIT238_AustralianEnglish_Phase2/static/js/2.dae1b8b6.chunk.js.map",
+    "fonts/MaterialCommunityIcons.ttf": "/HIT238_AustralianEnglish_Phase2/./fonts/MaterialCommunityIcons.ttf",
+    "fonts/Roboto-Bold.ttf": "/HIT238_AustralianEnglish_Phase2/./fonts/Roboto-Bold.ttf",
+    "fonts/Roboto-Medium.ttf": "/HIT238_AustralianEnglish_Phase2/./fonts/Roboto-Medium.ttf",
+    "fonts/Roboto-Regular.ttf": "/HIT238_AustralianEnglish_Phase2/./fonts/Roboto-Regular.ttf",
+    "favicon-16.png": "/HIT238_AustralianEnglish_Phase2/favicon-16.png",
+    "favicon-32.png": "/HIT238_AustralianEnglish_Phase2/favicon-32.png",
+    "favicon.ico": "/HIT238_AustralianEnglish_Phase2/favicon.ico",
+    "index.html": "/HIT238_AustralianEnglish_Phase2/index.html",
+    "manifest.json": "/HIT238_AustralianEnglish_Phase2/manifest.json",
+    "serve.json": "/HIT238_AustralianEnglish_Phase2/serve.json",
+    "static/js/2.dae1b8b6.chunk.js.LICENSE.txt": "/HIT238_AustralianEnglish_Phase2/static/js/2.dae1b8b6.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime~app.ed716ef1.js",
+    "static/js/2.dae1b8b6.chunk.js",
+    "static/js/app.ac0fd66a.chunk.js"
+  ]
+}
