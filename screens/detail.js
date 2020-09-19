@@ -52,12 +52,19 @@ export default class Detail extends React.Component {
           'Banger'  : require('../assets/audios/banger.mp3'),
         };
 
-         
-
+      
+        this.videos = {
+          "At the resturant" : require('../assets/videos/attheresturant.mp4'),
+          "Families" : require('../assets/videos/families.mp4'),
+          "Holidays" : require('../assets/videos/holidays.mp4'),
+          "Travelling" : require('../assets/videos/travelling.mp4'),
+          "The weather" : require('../assets/videos/theweather.mp4'),
+          "In the kitchen" : require('../assets/videos/inthekitchen.mp4'),
+        };
 
         this.image = this.images[this.itemTitle];
         this.audio = this.audios[this.itemTitle];
-
+        this.video = this.videos[this.itemTitle];
       }
       async componentDidMount() {
         Audio.setAudioModeAsync({
@@ -143,7 +150,7 @@ render() {
       ref={(ref) => {this.player = ref}}
       
       fullscreen
-  source={require('../assets/videos/12.mp4')}
+  source={this.video}
   useNativeControls
   rate={1.0}
   volume={1.0}
