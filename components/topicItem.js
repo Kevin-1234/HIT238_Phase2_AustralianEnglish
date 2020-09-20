@@ -50,6 +50,7 @@ const styles = StyleSheet.create({
   },
 
   itemTitle: { 
+    fontFamily: 'Roboto-bold',
     color: '#000000',
     fontSize: 24,  
   },
@@ -62,6 +63,7 @@ const styles = StyleSheet.create({
   },
 
   des: {
+    fontFamily: 'Roboto-medium',
     marginTop: 10,
     marginBottom: 10
   }

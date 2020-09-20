@@ -26,7 +26,8 @@ const styles = StyleSheet.create({
   },
 
   itemTitle: { 
+    fontFamily: 'Roboto-medium',
     color: '#f0f8ff',
-    fontSize: 24,  
+    fontSize: 22,  
   }
 });

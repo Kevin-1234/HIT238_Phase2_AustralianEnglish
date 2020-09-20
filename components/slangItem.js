@@ -17,9 +17,7 @@ export default function SlangItem({item, pressHandler}) {
   };
   const image = images[itemTitle];
 
-   
- 
-  
+
   return (
     
     <TouchableOpacity style={styles.item} onPress={() => pressHandler(item)}>
@@ -58,12 +56,13 @@ const styles = StyleSheet.create({
     borderRadius: 6
   },
 
-  itemText: {
+  itemText: { 
     alignSelf:'center',
     marginTop: '40%'
   },
 
   itemTitle: {
+    fontFamily: 'Roboto-medium',
     color: '#f0f8ff',
     fontSize: 24,
     marginLeft: 10,

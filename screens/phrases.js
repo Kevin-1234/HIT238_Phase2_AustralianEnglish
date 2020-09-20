@@ -1,9 +1,10 @@
 import React from 'react';
-import { StyleSheet, View, Text, FlatList, TouchableOpacity, ImageBackground } from 'react-native';
+import { StyleSheet, View, FlatList, TouchableOpacity, ImageBackground } from 'react-native';
 import {globalStyles} from '../styles/global';
 import PhraseItem from '../components/phraseItem';
 
 export default function Home({navigation}) {
+  // the data set of phrases
   const phrases = [
     {
       title: "Draw a Blank on Something",
@@ -38,7 +39,7 @@ export default function Home({navigation}) {
 
   ]
 
-
+  // pass item to 'detail' screen and navigate to it
   const pressHandler = (item) => {
     return (
       navigation.navigate('Detail', item)
@@ -47,19 +48,14 @@ export default function Home({navigation}) {
 
   return (
     <ImageBackground source={require('../assets/images/phrases-bg.jpg')} style={styles.backgroundImage}>
-    
-    <View style={globalStyles.container}>
-    {/* each item in 'data' is cycled through*/}
-  <FlatList style={styles.list} data={phrases} renderItem={({ item }) => (
-    <TouchableOpacity>
-      <PhraseItem item={item} pressHandler={pressHandler} />
-    </TouchableOpacity>
-  )} />
-
-
-</View>
+      <View style={globalStyles.container}>
+        <FlatList style={styles.list} data={phrases} renderItem={({ item }) => (
+          <TouchableOpacity>
+            <PhraseItem item={item} pressHandler={pressHandler} />
+          </TouchableOpacity>
+        )}/>
+      </View>
     </ImageBackground>
-    
   );
 }
 
@@ -67,14 +63,16 @@ const styles = StyleSheet.create({
   container: {
     padding: 24,
   },
-  list:{
 
+  list:{
     marginTop: 20,
     flex: 1,
    },
-   backgroundImage:{  
+
+ backgroundImage:{  
     width:'100%',
     height: '100%',
     borderRadius: 6
   },
+
 });

@@ -38,8 +38,6 @@ const HomeStack = () => {
 }
      
 
- 
-
 const getFonts = () => {
   return Font.loadAsync(
     {
@@ -49,12 +47,6 @@ const getFonts = () => {
     }
   );
 }
-
-
-
-
-
-
 
 
 
@@ -71,7 +63,6 @@ export default function App() {
         initialRouteName="Home"
         activeColor="#f0ffff"
         barStyle={{ backgroundColor: '#20b2aa' }}
-        
       >
         <BottomTab.Screen
           name="Home"
@@ -84,11 +75,9 @@ export default function App() {
             ),
           }}
         />
-        
       </BottomTab.Navigator>
     </NavigationContainer>
     // returns the screen in the stack
-      
     );
   } else {
     return (

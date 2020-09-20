@@ -8,9 +8,7 @@ export const globalStyles = StyleSheet.create({
     },
   
     titleText:{
-      fontFamily: 'Roboto-bold',
-      fontSize: 38, 
-  
+      fontFamily: 'Roboto-medium',  
     },
 
 

@@ -4,7 +4,7 @@ import { StyleSheet, View, Text, Image, ImageBackground, TouchableOpacity } from
 import {globalStyles} from '../styles/global';
 import { WebView } from 'react-native-webview';
 import { Audio, Video } from "expo-av";
-import VideoPlayer from 'expo-video-player'
+
 
 
 //const soundObject = new Audio.Sound();
@@ -132,8 +132,8 @@ render() {
     return (
       <View style={globalStyles.container}>
         <Image source={this.image} style={styles.image}></Image>
-        <Text style={[globalStyles.titleText, styles.title]}>{this.props.route.params.title}</Text>
-        <Text style={[globalStyles.titleText, styles.definition]}>{this.props.route.params.definition}</Text>
+        <Text style={[styles.title]}>{this.props.route.params.title}</Text>
+        <Text style={[styles.definition]}>{this.props.route.params.definition}</Text>
       </View>
       );
   }
@@ -149,15 +149,19 @@ const styles = StyleSheet.create({
   },
 
   title:{
-  marginTop:'8%',
+  fontFamily: 'Roboto-bold',
+  fontSize: 36,
+  marginTop:'5%',
+  marginBottom:'5%',
   },
 
   definition:{
-    fontSize:22,
-    marginTop: '10%',
+  fontFamily: 'Roboto-medium',
+  fontSize:22,
   },
 
   bgImage:{
+  marginBottom: '5%', 
   width:48,
   height: 48,
   },
