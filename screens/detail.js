@@ -4,7 +4,7 @@ import { StyleSheet, View, Text, Image, ImageBackground, TouchableOpacity } from
 import {globalStyles} from '../styles/global';
 import { WebView } from 'react-native-webview';
 import { Audio, Video } from "expo-av";
-import VideoPlayer from 'expo-video-player'
+
 
 
 //const soundObject = new Audio.Sound();
@@ -28,7 +28,7 @@ export default class Detail extends React.Component {
       constructor(props){
         super(props);
         this.itemTitle = this.props.route.params.title;
-
+        // hard code the paths of images, videos and audios because 'require()' does not accept a variable
         this.images = { 
           'Mash'  : require('../assets/images/l_mash.png'),
           'Avo'  : require('../assets/images/l_avo.png'),
@@ -52,13 +52,21 @@ export default class Detail extends React.Component {
           'Banger'  : require('../assets/audios/banger.mp3'),
         };
 
-         
-
-
+      
+        this.videos = {
+          "At the resturant" : require('../assets/videos/attheresturant.mp4'),
+          "Families" : require('../assets/videos/families.mp4'),
+          "Holidays" : require('../assets/videos/holidays.mp4'),
+          "Travelling" : require('../assets/videos/travelling.mp4'),
+          "The weather" : require('../assets/videos/theweather.mp4'),
+          "In the kitchen" : require('../assets/videos/inthekitchen.mp4'),
+        };
+        // the item info is passed from the parent screens
         this.image = this.images[this.itemTitle];
         this.audio = this.audios[this.itemTitle];
-
+        this.video = this.videos[this.itemTitle];
       }
+      // initialize audio 
       async componentDidMount() {
         Audio.setAudioModeAsync({
           allowsRecordingIOS: false,
@@ -76,141 +84,86 @@ export default class Detail extends React.Component {
         if (this.audio){
           this.sound.loadAsync(this.audio, status, false);
         }
-        
-        
       }
-     
+
+      // play the audio and reset after playing
       async playSound(){
-        
         await this.sound.playAsync();
         await this.sound.setPositionAsync(0)
       }
      
-  // the path for 'require' can not be dynamically changed 
-   
-   
-  
-  
-   
-    
 
-     
 render() {
-  
+  // if the item recieved from the parent screen contains audio (slangs), return this view
   if(this.audio){
-
-
-
     return (
       <View style={globalStyles.container}>
-
         <Image source={this.image} style={styles.image}></Image>
         <Text style={[globalStyles.titleText, styles.title]}>{this.props.route.params.title}</Text>
         <TouchableOpacity  onPress={this.playSound.bind(this)}>
-  
-        <ImageBackground source={require('../assets/images/speaker.png')} style={styles.bgImage}>
-        <Text style={[globalStyles.titleText, styles.definition]} ></Text>
-        </ImageBackground>
+          <ImageBackground source={require('../assets/images/speaker.png')} style={styles.bgImage}>
+          </ImageBackground>
         </TouchableOpacity>
-        
-        
         <Text style={[globalStyles.titleText, styles.definition]}>{this.props.route.params.definition}</Text>
       </View>
     );
-
-    
-  }else if (this.props.route.params.videoUrl){
-    console.log("haha");
-    //      <WebView source={{ uri: "https://www.youtube.com/watch?v=HROvbBQP3oE&list=PL0wWwf_rAjWZcpHecyJ0gdC06sbWHbGUL&index=42"}} style={{ width:'100%', height:315, borderRadius: 8, marginTop: 20 }} />
-    /*
-
-<VideoPlayer
-  videoProps={{
-    //auto play
-    shouldPlay: true,
-    resizeMode: Video.RESIZE_MODE_CONTAIN,
-    source: {
-      uri: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
-    },
-  }}
-  inFullscreen={true}
-/>
-
-*/
+   // if the item recieved from the parent screen contains video (topics), return this view 
+  }else if (this.props.route.params.videoUrl){ 
     return(
       <View style={styles.container}> 
-  <Video
-      ref={(ref) => {this.player = ref}}
-      
-      fullscreen
-  source={require('../assets/videos/12.mp4')}
-  useNativeControls
-  rate={1.0}
-  volume={1.0}
-  isMuted={false}
-  resizeMode="cover"
-  shouldPlay
-  isLooping
-  style={{ width: '100%', height: 300 }}
-/>
-      
+        <Video
+        ref={(ref) => {this.player = ref}}
+        fullscreen
+        source={this.video}
+        useNativeControls
+        rate={1.0}
+        volume={1.0}
+        isMuted={false}
+        resizeMode="cover"
+        shouldPlay
+        isLooping
+        style={{ width: '100%', height: 300 }}
+        />
       </View>
-
     );
-    
-
-
-
   }
-  
+  // else (phrases), return this view 
   else{
-
     return (
       <View style={globalStyles.container}>
-        <View style={{
-                 width:"100%",
-                 height:200
-             }}>
-        </View>
         <Image source={this.image} style={styles.image}></Image>
-        <Text style={[globalStyles.titleText, styles.title]}>{this.props.route.params.title}</Text>
-           
-        <Text style={[globalStyles.titleText, styles.definition]}>{this.props.route.params.definition}</Text>
+        <Text style={[styles.title]}>{this.props.route.params.title}</Text>
+        <Text style={[styles.definition]}>{this.props.route.params.definition}</Text>
       </View>
       );
-
   }
-
 }
- 
-
- 
 }
 
 const styles = StyleSheet.create({
-image: {
-  marginTop: '10%',
-  width: '100%',
-  height: 240,
-  borderRadius: 8,
-},
-title:{
-marginTop:'8%',
-},
+  image: {
+    marginTop: '10%',
+    width: '100%',
+    height: 240,
+    borderRadius: 8,
+  },
 
-definition:{
+  title:{
+  fontFamily: 'Roboto-bold',
+  fontSize: 36,
+  marginTop:'5%',
+  marginBottom:'5%',
+  },
+
+  definition:{
+  fontFamily: 'Roboto-medium',
   fontSize:22,
-  marginTop: '10%',
-},
-bgImage:{
-width:48,
-height: 48,
+  },
 
-},
-
-container:{
-height: 200,
-
-}
+  bgImage:{
+  marginBottom: '5%', 
+  width:48,
+  height: 48,
+  },
 
 })
