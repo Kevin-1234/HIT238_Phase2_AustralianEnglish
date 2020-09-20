@@ -2,7 +2,7 @@ import React from 'react'
 import { StyleSheet, TouchableOpacity, Text, View, Image,ImageBackground} from 'react-native';
 import { Card, ListItem, Button, Icon } from 'react-native-elements'
 
-
+// receive the an 'item' and a function that fires when each item is pressed from the parent file
 export default function TopicItem({item, pressHandler}) {
 
   const itemTitle = item.title;
@@ -18,30 +18,16 @@ export default function TopicItem({item, pressHandler}) {
   
   return (
 
-            
-                <Card containerStyle={styles.card}>
-  <Card.Title style={styles.itemTitle}>{item.title}</Card.Title>
-  <Card.Divider/>
-  <Card.Image source={image}>
-  </Card.Image>
-    <Text style={styles.des}>
-      The idea with React Native Elements is more about component structure than actual design.
-    </Text>
+  <Card containerStyle={styles.card}>
+    <Card.Title style={styles.itemTitle}>{item.title}</Card.Title>
+    <Card.Divider/>
+    <Card.Image source={image} style={styles.cardImage} >
+    </Card.Image >
+    <Text style={styles.des}>{item.description}</Text>
     <Button onPress={() => pressHandler(item)}
-    
-      
-      buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0}}
-      title='Start' />
-  
-</Card>
-                
-                
-              
-            
-         
-    
-    
-    
+     title='Start'/>
+  </Card>
+                  
   )
 }
 
@@ -58,21 +44,25 @@ const styles = StyleSheet.create({
     borderRadius: 8
   },
 
+  cardImage: {
+    width: '100%',
+    height:200
+  },
+
   itemTitle: { 
     color: '#000000',
     fontSize: 24,  
   },
+
   bgImage: {
     height: 80,
     width: '100%',
     justifyContent: 'center',
-    alignItems: 'center',
-    
+    alignItems: 'center',   
   },
+
   des: {
     marginTop: 10,
     marginBottom: 10
-
-
   }
 });

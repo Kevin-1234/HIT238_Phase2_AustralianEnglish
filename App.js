@@ -21,7 +21,11 @@ const BottomTab = createMaterialBottomTabNavigator();
 const HomeStack = () => {
   return(
 
-      <Stack.Navigator >
+      <Stack.Navigator
+      screenOptions={{    
+        headerStyle: { backgroundColor: '#20b2aa',  },
+        headerTitleStyle: { fontSize: 18, fontWeight:'bold', color:"#f0ffff"}
+      }} >
        <Stack.Screen name="Home" component={Home}/>
        <Stack.Screen name="Slangs" component={Slangs}/>
        <Stack.Screen name="Phrases" component={Phrases}/>
@@ -33,41 +37,7 @@ const HomeStack = () => {
 
 }
      
-const BottomnNav = () => {
 
-    return (
-      <BottomTab.Navigator
-        initialRouteName="Home"
-        activeColor="#e91e63"
-        style={{ backgroundColor: 'tomato' }}
-      >
-        <BottomTab.Screen
-          name="Home"
-          component={HomeStack}
-          options={{
-            tabBarLabel: 'Home',
-            tabBarIcon: ({ color }) => (
-              <MaterialCommunityIcons name="home" color={color} size={26} />
-            ),
-          }}
-        />
-        <BottomTab.Screen
-          name="Notifications"
-          component={Notifications}
-          options={{
-            tabBarLabel: 'Updates',
-            tabBarIcon: ({ color }) => (
-              <MaterialCommunityIcons name="bell" color={color} size={26} />
-            ),
-          }}
-        />
-        
-      </BottomTab.Navigator>
-    );
-
-  
-
-}
  
 
 const getFonts = () => {
@@ -99,14 +69,16 @@ export default function App() {
     <NavigationContainer>
       <BottomTab.Navigator
         initialRouteName="Home"
-        activeColor="#e91e63"
-        style={{ backgroundColor: 'tomato' }}
+        activeColor="#f0ffff"
+        barStyle={{ backgroundColor: '#20b2aa' }}
+        
       >
         <BottomTab.Screen
           name="Home"
           component={HomeStack}
           options={{
             tabBarLabel: 'Home',
+            tabBarColor: '#f0ffff',
             tabBarIcon: ({ color }) => (
               <MaterialCommunityIcons name="home" color={color} size={26} />
             ),
@@ -115,7 +87,7 @@ export default function App() {
         
       </BottomTab.Navigator>
     </NavigationContainer>
-      // returns the screen in the stack
+    // returns the screen in the stack
       
     );
   } else {

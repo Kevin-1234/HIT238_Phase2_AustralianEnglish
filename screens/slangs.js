@@ -66,9 +66,7 @@ export default function Slangs({navigation}) {
     <View style={globalStyles.container}>
         {/* each item in 'data' is cycled through*/}
       <FlatList style={styles.list} numColumns={2} data={slangs} renderItem={({ item }) => (
-        
           <SlangItem item={item} pressHandler={pressHandler} />
-        
       )} />
     </View>
   );
