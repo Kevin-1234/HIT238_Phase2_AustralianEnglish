@@ -1,7 +1,8 @@
 import React, {useState}from 'react';
 import { StyleSheet, View, Text, FlatList, TouchableOpacity } from 'react-native';
 import {globalStyles} from '../styles/global';
-import SlangItem from '../components/slangItem'
+import SlangItem from '../components/slangItem';
+
 
 
 
@@ -70,6 +71,7 @@ export default function Slangs({navigation}) {
 
   return (
     <View style={globalStyles.container}>
+      
         {/* each item in 'data' is cycled through*/}
       <FlatList style={styles.list} numColumns={2} data={slangs} renderItem={({ item }) => (
           <SlangItem item={item} pressHandler={pressHandler} />

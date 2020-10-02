@@ -27,6 +27,7 @@ export default class Detail extends React.Component {
       <Text style={globalStyles.titleText}>{navigation.getParam('definition', 'defultValue')}</Text>*/
       constructor(props){
         super(props);
+        
         this.itemTitle = this.props.route.params.title;
         // hard code the paths of images, videos and audios because 'require()' does not accept a variable
         this.images = { 
@@ -91,7 +92,7 @@ export default class Detail extends React.Component {
         await this.sound.playAsync();
         await this.sound.setPositionAsync(0)
       }
-     
+      
 
 render() {
   // if the item recieved from the parent screen contains audio (slangs), return this view
@@ -104,7 +105,7 @@ render() {
           <ImageBackground source={require('../assets/images/speaker.png')} style={styles.bgImage}>
           </ImageBackground>
         </TouchableOpacity>
-        <Text style={[globalStyles.titleText, styles.definition]}>{this.props.route.params.definition}</Text>
+    <Text style={[globalStyles.titleText, styles.definition]}>{this.props.route.params.definition}</Text>
       </View>
     );
    // if the item recieved from the parent screen contains video (topics), return this view 
@@ -132,7 +133,8 @@ render() {
     return (
       <View style={globalStyles.container}>
         <Image source={this.image} style={styles.image}></Image>
-        <Text style={[styles.title]}>{this.props.route.params.title}</Text>
+    <Text style={[styles.title]}>{this.props.route.params.title})
+    </Text>
         <Text style={[styles.definition]}>{this.props.route.params.definition}</Text>
       </View>
       );
