@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, TouchableOpacity, Image,ImageBackground} from 'react-native';
+import { StyleSheet, TouchableHighlight, Image,ImageBackground} from 'react-native';
 import {  ListItem } from 'react-native-elements';
 import { Container, Header, View, DeckSwiper, Card, CardItem, Thumbnail, Text, Left, Body, Icon } from 'native-base';
 // receive the an 'item' and a function that fires when each item is pressed from the parent file
@@ -28,34 +28,24 @@ export default function TopicItem({item, pressHandler}) {
   //    title='Start'/>
   // </Card>
   
-  <Container>
-        <Header />
-        <View>
-          <DeckSwiper
-            dataSource={cards}
-            renderItem={item =>
-              <Card style={{ elevation: 3 }}>
+  <Card style={{ elevation: 3 }}>
                 <CardItem>
                   <Left>
-                    <Thumbnail source={image} />
+                    <Thumbnail source={item.image} />
                     <Body>
-                      <Text>{item.text}</Text>
+                      <Text>{item.title}</Text>
                       <Text note>NativeBase</Text>
                     </Body>
                   </Left>
                 </CardItem>
                 <CardItem cardBody>
-                  <Image style={{ height: 300, flex: 1 }} source={image} />
+                  <Image style={{ height: 300, flex: 1 }} source={item.image} />
                 </CardItem>
                 <CardItem>
                   <Icon name="heart" style={{ color: '#ED4A6A' }} />
-                  <Text>{item.name}</Text>
+                  <Text>{item.description}</Text>
                 </CardItem>
               </Card>
-            }
-          />
-        </View>
-      </Container>
     
 
   );
