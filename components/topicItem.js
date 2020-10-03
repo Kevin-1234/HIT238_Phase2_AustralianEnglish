@@ -28,24 +28,30 @@ export default function TopicItem({item, pressHandler}) {
   //    title='Start'/>
   // </Card>
   
-  <Card style={{ elevation: 3 }}>
-                <CardItem>
-                  <Left>
-                    <Thumbnail source={item.image} />
-                    <Body>
-                      <Text>{item.title}</Text>
-                      <Text note>NativeBase</Text>
-                    </Body>
-                  </Left>
-                </CardItem>
-                <CardItem cardBody>
-                  <Image style={{ height: 300, flex: 1 }} source={item.image} />
-                </CardItem>
-                <CardItem>
-                  <Icon name="heart" style={{ color: '#ED4A6A' }} />
-                  <Text>{item.description}</Text>
-                </CardItem>
-              </Card>
+  
+  <Card style={{ elevation: 2 }}>
+    <CardItem>
+      
+        
+        <Body>
+          <Text style={styles.itemTitle}>{item.title}</Text>
+        </Body>
+          
+        
+      
+    </CardItem>
+    <TouchableHighlight activeOpacity={0.5}
+  underlayColor="#696969"   
+  onPress={() => pressHandler(item)}>
+    <CardItem cardBody>
+      <Image style={{ height: 300, flex: 1 }} source={item.image} />
+    </CardItem>
+    </TouchableHighlight>
+    <CardItem>
+      <Text>{item.description}</Text>
+    </CardItem>
+  </Card>
+
     
 
   );
@@ -72,7 +78,8 @@ const styles = StyleSheet.create({
   itemTitle: { 
     fontFamily: 'Roboto-bold',
     color: '#000000',
-    fontSize: 24,  
+    fontSize: 28, 
+    alignSelf: 'center', 
   },
 
   bgImage: {
@@ -86,5 +93,10 @@ const styles = StyleSheet.create({
     fontFamily: 'Roboto-medium',
     marginTop: 10,
     marginBottom: 10
+  },
+  item: {
+    borderEndWidth: 0 ,
+
+
   }
 });
