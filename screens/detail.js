@@ -96,66 +96,75 @@ export default class Detail extends React.Component {
 
       // save data to async storage
       storeData = async (item) => {
+        var DBKey ='';
         if(this.audio){
-          let existingSlang = false;
-          const existingSlangs = await AsyncStorage.getItem('slangs');
-          const slangToSave = { 
-          'title': item.title,
-          'key': item.key,
-          'definition': item.definition,
-          'imageS': item.imageS,
-          'imageL': item.imageL,
-          'audio': item.audio
+          DBKey = 'slangs';
+                  
+        }else if(this.props.route.params.videoUrl){
+          DBKey = 'topics';
+         
+        }else{
+          DBKey = 'phrases';  
+        }
+        
+        let existingItem = false;
+        const existingItems = await AsyncStorage.getItem(DBKey);
+        const itemToSave = item;
+
+        let newItemList = JSON.parse(existingItems);
+        if( !newItemList ){
+          newItemList = []
         }
 
-    
-        let newSlangList = JSON.parse(existingSlangs);
-        if( !newSlangList ){
-          newSlangList = []
-        }
-      
-  
-        newSlangList.forEach(element => {         
-          if (element.title === slangToSave.title){           
-            existingSlang = true;
+        newItemList.forEach(element => {         
+          if (element.title === itemToSave.title){           
+            existingItem = true;
           }
         });
-      
-        if (!existingSlang) {
-          newSlangList.push( slangToSave );
+
+        if (!existingItem) {
+          newItemList.push( itemToSave );
         try { 
-          await AsyncStorage.setItem('slangs', JSON.stringify(newSlangList))
+          await AsyncStorage.setItem(DBKey, JSON.stringify(newItemList))
           console.log("Secucessfully saved!");
         } catch (e) {
           console.log("There was an error!");
           // saving error
         }
         }else{
-          console.log("The slang has already been added to the nootebook");
+          console.log("The item has already been added to the nootebook");
         }
 
-        }
-    
       }
 
       removeData = async (item) => {
-        const existingSlangs = await AsyncStorage.getItem('slangs');
+        var DBKey = '';
+        if(this.audio){
+          DBKey = 'slangs';
+                  
+        }else if(this.props.route.params.videoUrl){
+          DBKey = 'topics';
+         
+        }else{
+          DBKey = 'phrases';  
+        }
+        const existingItems = await AsyncStorage.getItem(DBKey);
         
-        let newSlangList = JSON.parse(existingSlangs);
-        if( !newSlangList ){
-          newSlangList = []
+        let newItemList = JSON.parse(existingItems);
+        if( !newItemList ){
+          newItemList = []
         }
       
         
-        newSlangList.forEach(element => {         
+        newItemList.forEach(element => {         
           if (element.title === item.title){           
-            let index = newSlangList.indexOf(element);
-            newSlangList.splice(index, 1);
-            console.log("newSlang: " + newSlangList);
+            let index = newItemList.indexOf(element);
+            newItemList.splice(index, 1);
+            
           }
         });
         try { 
-          await AsyncStorage.setItem('slangs', JSON.stringify(newSlangList))
+          await AsyncStorage.setItem(DBKey, JSON.stringify(newItemList))
           console.log("Secucessfully removed!");
         } catch (e) {
           console.log("There was an error!");
@@ -212,6 +221,19 @@ render() {
         isLooping
         style={{ width: '100%', height: 300 }}
         />
+        <Button
+    onPress={() => this.storeData(this.props.route.params)}
+    title="Save"
+    color="#841584"
+    accessibilityLabel="Learn more about this purple button"
+  />
+
+<Button
+    onPress={() => this.removeData(this.props.route.params)}
+    title="Remove"
+    color="#841584"
+    accessibilityLabel="Learn more about this purple button"
+  />
       </View>
     );
   }
@@ -223,6 +245,20 @@ render() {
     <Text style={[styles.title]}>{this.props.route.params.title})
     </Text>
         <Text style={[styles.definition]}>{this.props.route.params.definition}</Text>
+
+        <Button
+    onPress={() => this.storeData(this.props.route.params)}
+    title="Save"
+    color="#841584"
+    accessibilityLabel="Learn more about this purple button"
+  />
+
+<Button
+    onPress={() => this.removeData(this.props.route.params)}
+    title="Remove"
+    color="#841584"
+    accessibilityLabel="Learn more about this purple button"
+  />
       </View>
       );
   }

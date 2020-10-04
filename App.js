@@ -13,6 +13,8 @@ import Topics from './screens/topics';
 import Detail from './screens/detail';
 import Notebook from './screens/noteBook';
 import SlangNote from './screens/slangNote';
+import PhraseNote from './screens/phraseNote';
+import TopicNote from './screens/topicNote';
 
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -50,6 +52,8 @@ const NotebookStack = () => {
       }} >
        <Stack.Screen name="Notebook" component={Notebook}/>
        <Stack.Screen name="Slang Notes" component={SlangNote}/>
+       <Stack.Screen name="Phrase Notes" component={PhraseNote}/>
+       <Stack.Screen name="Topic Notes" component={TopicNote}/>
        <Stack.Screen name="Detail" component={Detail}/>
       
      </Stack.Navigator>

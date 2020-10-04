@@ -18,7 +18,8 @@ export default function SlangNote({navigation}) {
         }
     } 
     useEffect(() => {
-      getData()  
+      getData() 
+      console.log(slangList);
     }, []);
      
     
@@ -28,16 +29,28 @@ export default function SlangNote({navigation}) {
         navigation.navigate('Detail', item)
       );
     }
+    if(slangList.length <= 0){
+      return(
+          <View>
+              <Text style={styles.heading}>No slang notes found!</Text>
+          </View>          
+      );
+       
+  }else{
+
     return (
          
-        <View style={globalStyles.container}>
-            <FlatList style={styles.list} numColumns={2} data={slangList} renderItem={({ item }) => (
-             <SlangItem item={item} pressHandler={pressHandler} />
-         )}/>
+      <View style={globalStyles.container}>
+          <FlatList style={styles.list} numColumns={2} data={slangList} renderItem={({ item }) => (
+           <SlangItem item={item} pressHandler={pressHandler} />
+       )}/>
 
-        </View>
-        
-    );
+      </View>
+      
+  );
+
+  }
+    
 
 }
 
@@ -45,5 +58,10 @@ const styles = StyleSheet.create({
     list:{
      marginTop: 20,
      flex: 1,
-    }
+    },
+    heading:{
+      fontSize: 38,
+      marginTop: '40%',
+      alignSelf: 'center'
+  }
    });
