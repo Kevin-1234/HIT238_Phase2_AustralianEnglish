@@ -1,9 +1,10 @@
 import { BaseRouter } from '@react-navigation/native';
 import React from 'react';
-import { StyleSheet, View, Text, Image, ImageBackground, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, Text, Image, ImageBackground, TouchableOpacity, Button } from 'react-native';
 import {globalStyles} from '../styles/global';
 import { WebView } from 'react-native-webview';
 import { Audio, Video } from "expo-av";
+import AsyncStorage from '@react-native-community/async-storage';
 
 
 
@@ -92,6 +93,76 @@ export default class Detail extends React.Component {
         await this.sound.playAsync();
         await this.sound.setPositionAsync(0)
       }
+
+      // save data to async storage
+      storeData = async (item) => {
+        if(this.audio){
+          let existingSlang = false;
+          const existingSlangs = await AsyncStorage.getItem('slangs');
+          const slangToSave = { 
+          'title': item.title,
+          'key': item.key,
+          'definition': item.definition,
+          'imageS': item.imageS,
+          'imageL': item.imageL,
+          'audio': item.audio
+        }
+
+    
+        let newSlangList = JSON.parse(existingSlangs);
+        if( !newSlangList ){
+          newSlangList = []
+        }
+      
+  
+        newSlangList.forEach(element => {         
+          if (element.title === slangToSave.title){           
+            existingSlang = true;
+          }
+        });
+      
+        if (!existingSlang) {
+          newSlangList.push( slangToSave );
+        try { 
+          await AsyncStorage.setItem('slangs', JSON.stringify(newSlangList))
+          console.log("Secucessfully saved!");
+        } catch (e) {
+          console.log("There was an error!");
+          // saving error
+        }
+        }else{
+          console.log("The slang has already been added to the nootebook");
+        }
+
+        }
+    
+      }
+
+      removeData = async (item) => {
+        const existingSlangs = await AsyncStorage.getItem('slangs');
+        
+        let newSlangList = JSON.parse(existingSlangs);
+        if( !newSlangList ){
+          newSlangList = []
+        }
+      
+        
+        newSlangList.forEach(element => {         
+          if (element.title === item.title){           
+            let index = newSlangList.indexOf(element);
+            newSlangList.splice(index, 1);
+            console.log("newSlang: " + newSlangList);
+          }
+        });
+        try { 
+          await AsyncStorage.setItem('slangs', JSON.stringify(newSlangList))
+          console.log("Secucessfully removed!");
+        } catch (e) {
+          console.log("There was an error!");
+          // saving error
+        }
+
+        }
       
 
 render() {
@@ -105,8 +176,24 @@ render() {
           <ImageBackground source={require('../assets/images/speaker.png')} style={styles.bgImage}>
           </ImageBackground>
         </TouchableOpacity>
+
     <Text style={[globalStyles.titleText, styles.definition]}>{this.props.route.params.definition}</Text>
+    <Button
+    onPress={() => this.storeData(this.props.route.params)}
+    title="Save"
+    color="#841584"
+    accessibilityLabel="Learn more about this purple button"
+  />
+
+<Button
+    onPress={() => this.removeData(this.props.route.params)}
+    title="Remove"
+    color="#841584"
+    accessibilityLabel="Learn more about this purple button"
+  />
       </View>
+      
+      
     );
    // if the item recieved from the parent screen contains video (topics), return this view 
   }else if (this.props.route.params.videoUrl){ 

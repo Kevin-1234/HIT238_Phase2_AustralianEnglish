@@ -11,6 +11,9 @@ import Slangs from './screens/slangs';
 import Phrases from './screens/phrases';
 import Topics from './screens/topics';
 import Detail from './screens/detail';
+import Notebook from './screens/noteBook';
+import SlangNote from './screens/slangNote';
+
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
@@ -31,6 +34,24 @@ const HomeStack = () => {
        <Stack.Screen name="Phrases" component={Phrases}/>
        <Stack.Screen name="Topics" component={Topics}/>
        <Stack.Screen name="Detail" component={Detail}/>
+     </Stack.Navigator>
+
+  );
+
+}
+
+const NotebookStack = () => {
+  return(
+
+      <Stack.Navigator
+      screenOptions={{    
+        headerStyle: { backgroundColor: '#20b2aa',  },
+        headerTitleStyle: { fontSize: 18, fontWeight:'bold', color:"#f0ffff"}
+      }} >
+       <Stack.Screen name="Notebook" component={Notebook}/>
+       <Stack.Screen name="Slang Notes" component={SlangNote}/>
+       <Stack.Screen name="Detail" component={Detail}/>
+      
      </Stack.Navigator>
 
   );
@@ -72,6 +93,17 @@ export default function App() {
             tabBarColor: '#f0ffff',
             tabBarIcon: ({ color }) => (
               <MaterialCommunityIcons name="home" color={color} size={26} />
+            ),
+          }}
+        />
+        <BottomTab.Screen
+          name="NotebookStack"
+          component={NotebookStack}
+          options={{
+            tabBarLabel: 'Notebook',
+            tabBarColor: '#f0ffff',
+            tabBarIcon: ({ color }) => (
+              <MaterialCommunityIcons name="notebook-outline" color={color} size={26} />
             ),
           }}
         />
