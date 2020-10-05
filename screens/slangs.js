@@ -1,7 +1,8 @@
 import React, {useState}from 'react';
-import { StyleSheet, View, Text, FlatList, TouchableOpacity } from 'react-native';
+import { StyleSheet, FlatList, TouchableOpacity } from 'react-native';
 import {globalStyles} from '../styles/global';
 import SlangItem from '../components/slangItem';
+import { Container, Header, View, List, Item, Input, Button, DeckSwiper, Card, CardItem, Thumbnail, Text, Left, Body, Icon } from 'native-base';
 
 
 
@@ -9,7 +10,8 @@ import SlangItem from '../components/slangItem';
 export default function Slangs({navigation}) {
  
   // the data set of slangs
- const slangs = [
+
+  const slangData = [
     {
         title: "Mash",
         key: '1',
@@ -59,7 +61,26 @@ export default function Slangs({navigation}) {
         audio: "../assets/audios/flatwhite.mp3"
     },
 
-  ]; 
+  ];
+  const [slangList, setSlangList] = useState(slangData);
+  const [search, setSearch] = useState('');
+  const arrayholder = slangData;
+  function SearchFilterFunction(text) {
+    var newData = arrayholder;
+    if(text){
+        newData = arrayholder.filter(function(item) {
+        //applying filter for the inserted text in search bar
+        const itemData = item.title ? item.title.toUpperCase() : ''.toUpperCase();
+        const textData = text.toUpperCase();
+        return itemData.indexOf(textData) > -1;
+      });
+
+    }
+    //passing the inserted text in textinput
+    setSlangList(newData);
+    setSearch(text);
+   
+  }
 
   // pass item to 'detail' screen and navigate to it  
   const pressHandler = (item) => {
@@ -71,11 +92,21 @@ export default function Slangs({navigation}) {
 
   return (
     <View style={globalStyles.container}>
-      
-        {/* each item in 'data' is cycled through*/}
-      <FlatList style={styles.list} numColumns={2} data={slangs} renderItem={({ item }) => (
-          <SlangItem item={item} pressHandler={pressHandler} />
+      <Container>
+        <Header searchBar rounded>
+          <Item>
+            <Icon name="ios-search" />
+            <Input placeholder="Search" onChangeText={text => SearchFilterFunction(text)}
+            value={search} />      
+          </Item>     
+        </Header>
+        
+        <FlatList style={styles.list} numColumns={2} data={slangList} renderItem={({ item }) => (
+          <SlangItem item={item} pressHandler={pressHandler}  keyExtractor={(item, index) => index.toString()}/>
       )}/>
+   
+      </Container>
+        {/* each item in 'data' is cycled through*/} 
     </View>
   );
 }
