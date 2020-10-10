@@ -6,12 +6,17 @@ import { color } from 'react-native-reanimated';
 export default function Practice({navigation}) {
     const [slangList, setSlangList] = useState(  );
    
+    const startPractice = () => {
+        return (
+            navigation.navigate('Practice Item List')
+          );
 
+    }
     return (
         <View style={styles.container}>
            
          <Text style={styles.slogan}>You have learned <Text style={styles.emphasize}>8</Text> slang words</Text>
-          <Button large rounded style={styles.buttons}>
+          <Button large rounded style={styles.buttons} onPress={() => startPractice()}>
             <Text>Start practicing</Text>
           </Button>
   

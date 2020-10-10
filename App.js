@@ -16,6 +16,7 @@ import SlangNote from './screens/slangNote';
 import PhraseNote from './screens/phraseNote';
 import TopicNote from './screens/topicNote';
 import Practice from './screens/practice';
+import PracticeItemList from './screens/practiceItemList';
 
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -72,6 +73,7 @@ const PracticeStack = () => {
         headerTitleStyle: { fontSize: 18, fontWeight:'bold', color:"#f0ffff"}
       }} >
        <Stack.Screen name="Practice" component={Practice}/>
+       <Stack.Screen name="Practice Item List" component={PracticeItemList}/>
       
       
      </Stack.Navigator>
