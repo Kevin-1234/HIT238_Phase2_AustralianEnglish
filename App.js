@@ -15,6 +15,7 @@ import Notebook from './screens/noteBook';
 import SlangNote from './screens/slangNote';
 import PhraseNote from './screens/phraseNote';
 import TopicNote from './screens/topicNote';
+import Practice from './screens/practice';
 
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -55,6 +56,23 @@ const NotebookStack = () => {
        <Stack.Screen name="Phrase Notes" component={PhraseNote}/>
        <Stack.Screen name="Topic Notes" component={TopicNote}/>
        <Stack.Screen name="Detail" component={Detail}/>
+      
+     </Stack.Navigator>
+
+  );
+
+}
+
+const PracticeStack = () => {
+  return(
+
+      <Stack.Navigator
+      screenOptions={{    
+        headerStyle: { backgroundColor: '#20b2aa',  },
+        headerTitleStyle: { fontSize: 18, fontWeight:'bold', color:"#f0ffff"}
+      }} >
+       <Stack.Screen name="Practice" component={Practice}/>
+      
       
      </Stack.Navigator>
 
@@ -108,6 +126,17 @@ export default function App() {
             tabBarColor: '#f0ffff',
             tabBarIcon: ({ color }) => (
               <MaterialCommunityIcons name="notebook-outline" color={color} size={26} />
+            ),
+          }}
+        />
+        <BottomTab.Screen
+          name="PracticeStack"
+          component={PracticeStack}
+          options={{
+            tabBarLabel: 'Practice',
+            tabBarColor: '#f0ffff',
+            tabBarIcon: ({ color }) => (
+              <MaterialCommunityIcons name="school" color={color} size={26} />
             ),
           }}
         />
