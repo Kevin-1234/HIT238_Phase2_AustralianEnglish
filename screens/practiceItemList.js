@@ -326,6 +326,7 @@ export default function PracticeItemList({ navigation }) {
     },150);
     
     setTimeout(() => {fadeIn();}, 150);
+    setDisabled(false);
   };
 
   const onPrevious = () => {
@@ -345,7 +346,7 @@ export default function PracticeItemList({ navigation }) {
 
     }, 150);
     setTimeout(() => {fadeIn();}, 150);
-
+    setDisabled(false);
   };
 
   return (
