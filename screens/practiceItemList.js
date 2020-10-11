@@ -356,19 +356,23 @@ export default function PracticeItemList({ navigation }) {
                       styles.fadingContainer,
                       {
                         opacity: fadeAnimItem, 
+                        borderRadius: 5,
+                        
                       },
                     ]}
                   >
-        <Card style={{ elevation: 3 }}>
+        <Card style={{ elevation: 3, borderRadius: 5,backgroundColor: '#ff8c00',marginTop: '8%', width:'95%',height: 500, alignSelf:'center' }}>
         
-          <CardItem>
+          <CardItem style={{backgroundColor: 'chocolate'}}>
             <Left>
               <Body>
                 <Text
                   style={{
+                    paddingTop: '6%',
                     alignSelf: "center",
                     fontSize: 32,
                     fontWeight: "600",
+                    color: '#f0ffff',
                   }}
                 >
                   {itemTtile}
@@ -379,7 +383,7 @@ export default function PracticeItemList({ navigation }) {
           </CardItem>
                   
           <Grid>
-            <Row>
+            <Row style={styles.row}>
               <Col style={styles.column}>
                 <TouchableOpacity
                   disabled={disabled}
@@ -426,7 +430,7 @@ export default function PracticeItemList({ navigation }) {
                 </TouchableOpacity>
               </Col>
             </Row>
-            <Row>
+            <Row style={styles.row}>
               <Col style={styles.column}>
                 <TouchableOpacity
                   disabled={disabled}
@@ -475,8 +479,8 @@ export default function PracticeItemList({ navigation }) {
             </Row>
           </Grid>
           
-          <CardItem>
-            <Text>Note:Choose the correct picture for the slang </Text>
+          <CardItem style={{backgroundColor:'#d2691e'}}>
+            <Text style={{color:'#f0ffff'}}>Note: Choose the correct picture</Text>
           </CardItem>
         </Card>
         </Animated.View>
@@ -484,11 +488,11 @@ export default function PracticeItemList({ navigation }) {
         <View style={styles.buttonRow}>
          
 
-          <Button iconLeft  style={{marginHorizontal:30}} onPress={onPrevious}>
+          <Button iconLeft  style={{marginHorizontal:50}} onPress={onPrevious}>
     <Icon name="arrow-back" />
     <Text>Previous</Text>
   </Button>
-  <Button iconRight style={{marginHorizontal:30}} onPress={onNext}>
+  <Button iconRight style={{marginHorizontal:50}} onPress={onNext}>
     <Icon name="arrow-forward" style={{paddingLeft: 34, paddingRight:0}}/>
     <Text>Next</Text>
   </Button>
@@ -515,27 +519,38 @@ const styles = StyleSheet.create({
   },
 
   column: {
-    marginHorizontal: 5,
-    marginVertical: 5,
-    height: 200,
 
+    marginHorizontal: 2,
+    marginVertical: 2,
+    height: 150,
+    width: '45%',
+    
+    
     borderRadius: 5,
     shadowColor: "#000000",
-    shadowOffset: { width: 1, height: 3 },
+    shadowOffset: { width: 0.5, height: 0.5 },
     shadowOpacity: 0.7,
     shadowRadius: 5,
     elevation: 1,
   },
+  row: {
+   
+    alignItems:'center',
+    justifyContent: "space-around",
+  },
   cardItem: {
+    
     borderRadius: 5,
   },
   image: {
-    height: 200,
-    width: "100%",
+    
+    height: 160,
+    width: 100,
     flex: 1,
     borderRadius: 5,
   },
   fadingContainer: {
+   
     
   },
   fadingText: {
