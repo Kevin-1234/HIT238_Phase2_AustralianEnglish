@@ -77,7 +77,7 @@ export default function PracticeItemList({ navigation }) {
   const fadeAnim2 = useRef(new Animated.Value(1)).current;
   const fadeAnim3 = useRef(new Animated.Value(1)).current;
   const fadeAnim4 = useRef(new Animated.Value(1)).current;
-  const fadeAnimItem = useRef(new Animated.Value(0)).current;
+  const fadeAnimItem = useRef(new Animated.Value(1)).current;
 
   const [audio, setAudio] = useState(require('../assets/audios/correct.mp3'));
   const [sound, setSound] = useState(new Audio.Sound());
