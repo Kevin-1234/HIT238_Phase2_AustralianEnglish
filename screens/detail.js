@@ -289,7 +289,7 @@ style={styles.button}
     return (
       <View style={globalStyles.container}>
         <Image source={this.image} style={styles.image}></Image>
-    <Text style={[styles.title]}>{this.props.route.params.title})
+    <Text style={[styles.title]}>{this.props.route.params.title}
     </Text>
         <Text style={[styles.definition]}>{this.props.route.params.definition}</Text>
         <Root>
