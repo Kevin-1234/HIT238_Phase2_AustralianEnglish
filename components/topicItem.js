@@ -1,7 +1,7 @@
 import React from 'react'
 import { StyleSheet, TouchableHighlight, Image,ImageBackground} from 'react-native';
 import {  ListItem } from 'react-native-elements';
-import { Container, Header, View, DeckSwiper, Card, CardItem, Thumbnail, Text, Left, Body, Icon } from 'native-base';
+import { Container, Header, View, DeckSwiper, Card, CardItem, Thumbnail, Text, Left, Body, Icon, Button } from 'native-base';
 // receive the an 'item' and a function that fires when each item is pressed from the parent file
 export default function TopicItem({item, pressHandler}) {
 
@@ -49,6 +49,14 @@ export default function TopicItem({item, pressHandler}) {
     <CardItem>
       <Text>{item.description}</Text>
     </CardItem>
+    <CardItem>
+              <Left>
+                <Button textStyle={{color: '#87838B'}} onPress={() => pressHandler(item)}>
+                  <Icon name="play" />
+                  <Text>Start Learning</Text>
+                </Button>
+              </Left>
+            </CardItem>
   </Card>
 
     
