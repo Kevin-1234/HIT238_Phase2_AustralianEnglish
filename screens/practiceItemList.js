@@ -1,4 +1,5 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
+import { Audio} from "expo-av";
 import {
   StyleSheet,
   Image,
@@ -77,6 +78,9 @@ export default function PracticeItemList({ navigation }) {
   const fadeAnim3 = useRef(new Animated.Value(1)).current;
   const fadeAnim4 = useRef(new Animated.Value(1)).current;
   const fadeAnimItem = useRef(new Animated.Value(0)).current;
+
+  const [audio, setAudio] = useState(require('../assets/audios/correct.mp3'));
+  const [sound, setSound] = useState(new Audio.Sound());
 
   // const fadeIn = () => {
   //     // Will change fadeAnim value to 1 in 5 seconds
@@ -168,142 +172,201 @@ export default function PracticeItemList({ navigation }) {
     }
   };
 
-  const switchPicture = (itemTitle, state) => {
+  const switchPicture = async (itemTitle, state) => {
     if (itemTitle === practiceItems[itemIndex].title) {
+      await sound.unloadAsync().then( async () => {
+        await sound.loadAsync(audio).then(() => {
 
-      if (state === itemPicture1) {
-        fadeOut(state);
-        setTimeout(() => {
-          setItemPicture1(require("../assets/images/tick.png"));
-        }, 100);
-        setTimeout(() => {
-          fadeIn(state);
-        }, 150);
+          if (state === itemPicture1) {
+            fadeOut(state);
+            setTimeout(() => {
+              setItemPicture1(require("../assets/images/tick.png"));
+            }, 100);
+            setTimeout(() => {
+              fadeIn(state);
+            }, 150);
+            playSound();
+    
+            
+          } else if (state === itemPicture2) {
+            fadeOut(state);
+            setTimeout(() => {
+              setItemPicture2(require("../assets/images/tick.png"));
+            }, 100);
+            setTimeout(() => {
+              fadeIn(state);
+            }, 150);
+            playSound();
+          } else if (state === itemPicture3) {
+            fadeOut(state);
+            setTimeout(() => {
+              setItemPicture3(require("../assets/images/tick.png"));
+            }, 100);
+            setTimeout(() => {
+              fadeIn(state);
+            }, 150);
+            playSound();
+          } else if (state === itemPicture4) {
+            fadeOut(state);
+    
+            setTimeout(() => {
+              setItemPicture4(require("../assets/images/tick.png"));
+            }, 100);
+    
+            setTimeout(() => {
+              fadeIn(state);
+            }, 150);
+            playSound();
+          }
+          setDisabled(true);
+        })
 
-        //setItemPicture(require("../assets/images/sb_mash.png"));
-      } else if (state === itemPicture2) {
-        fadeOut(state);
-        setTimeout(() => {
-          setItemPicture2(require("../assets/images/tick.png"));
-        }, 100);
-        setTimeout(() => {
-          fadeIn(state);
-        }, 150);
-      } else if (state === itemPicture3) {
-        fadeOut(state);
-        setTimeout(() => {
-          setItemPicture3(require("../assets/images/tick.png"));
-        }, 100);
+      });
+      
 
-        setTimeout(() => {
-          fadeIn(state);
-        }, 150);
-      } else if (state === itemPicture4) {
-        fadeOut(state);
-
-        setTimeout(() => {
-          setItemPicture4(require("../assets/images/tick.png"));
-        }, 100);
-
-        setTimeout(() => {
-          fadeIn(state);
-        }, 150);
-      }
-
-      setDisabled(true);
+      
 
     } else {
-      if (state === itemPicture1) {
-        fadeOut(state);
-        setTimeout(() => {
-          setItemPicture1(require("../assets/images/wrong.png"));
-        }, 100);
+      
+      //setAudio(require('../assets/audios/wrong.mp3'));
+      //setSound(new Audio.Sound());
+      //await sound.unloadAsync();
+      await sound.unloadAsync().then( async () => {
+        await sound.loadAsync(require('../assets/audios/wrong.mp3')).then(() => {
 
-        setTimeout(() => {
-          fadeIn(state);
-        }, 150);
+          if (state === itemPicture1) {
+            fadeOut(state);
+            setTimeout(() => {
+              setItemPicture1(require("../assets/images/wrong.png"));
+            }, 100);
+    
+            setTimeout(() => {
+              fadeIn(state);
+            }, 150);
+    
+            setTimeout(() => {
+              fadeOut(state);
+            }, 500);
+    
+            setTimeout(() => {
+              setItemPicture1(practiceItems[itemIndex].image1);
+            }, 600);
+    
+            setTimeout(() => {
+              fadeIn(state);
+            }, 700);
+            playSound();
+    
+          } else if (state === itemPicture2) {
+            fadeOut(state);
+            setTimeout(() => {
+              setItemPicture2(require("../assets/images/wrong.png"));
+            }, 100);
+    
+            setTimeout(() => {
+              fadeIn(state);
+            }, 150);
+    
+            setTimeout(() => {
+              fadeOut(state);
+            }, 500);
+    
+            setTimeout(() => {
+              setItemPicture2(practiceItems[itemIndex].image2);
+            }, 600);
+    
+            setTimeout(() => {
+              fadeIn(state);
+            }, 700);
+            playSound();
+    
+          } else if (state === itemPicture3) {
+            fadeOut(state);
+            setTimeout(() => {
+              setItemPicture3(require("../assets/images/wrong.png"));
+            }, 100);
+    
+            setTimeout(() => {
+              fadeIn(state);
+            }, 150);
+    
+            setTimeout(() => {
+              fadeOut(state);
+            }, 500);
+    
+            setTimeout(() => {
+              setItemPicture3(practiceItems[itemIndex].image3);
+            }, 600);
+    
+            setTimeout(() => {
+              fadeIn(state);
+            }, 700);
+            playSound();
+    
+          } else if (state === itemPicture4) {
+            fadeOut(state);
+            setTimeout(() => {
+              setItemPicture4(require("../assets/images/wrong.png"));
+            }, 100);
+    
+            setTimeout(() => {
+              fadeIn(state);
+            }, 150);
+    
+            setTimeout(() => {
+              fadeIn(state);
+            }, 150);
+    
+            setTimeout(() => {
+              fadeOut(state);
+            }, 500);
+    
+            setTimeout(() => {
+              setItemPicture4(practiceItems[itemIndex].image4);
+            }, 600);
+    
+            setTimeout(() => {
+              fadeIn(state);
+            }, 700);
+            playSound();
+          }
+        })
 
-        setTimeout(() => {
-          fadeOut(state);
-        }, 500);
-
-        setTimeout(() => {
-          setItemPicture1(practiceItems[itemIndex].image1);
-        }, 600);
-
-        setTimeout(() => {
-          fadeIn(state);
-        }, 700);
-      } else if (state === itemPicture2) {
-        fadeOut(state);
-        setTimeout(() => {
-          setItemPicture2(require("../assets/images/wrong.png"));
-        }, 100);
-
-        setTimeout(() => {
-          fadeIn(state);
-        }, 150);
-
-        setTimeout(() => {
-          fadeOut(state);
-        }, 500);
-
-        setTimeout(() => {
-          setItemPicture2(practiceItems[itemIndex].image2);
-        }, 600);
-
-        setTimeout(() => {
-          fadeIn(state);
-        }, 700);
-      } else if (state === itemPicture3) {
-        fadeOut(state);
-        setTimeout(() => {
-          setItemPicture3(require("../assets/images/wrong.png"));
-        }, 100);
-
-        setTimeout(() => {
-          fadeIn(state);
-        }, 150);
-
-        setTimeout(() => {
-          fadeOut(state);
-        }, 500);
-
-        setTimeout(() => {
-          setItemPicture3(practiceItems[itemIndex].image3);
-        }, 600);
-
-        setTimeout(() => {
-          fadeIn(state);
-        }, 700);
-      } else if (state === itemPicture4) {
-        fadeOut(state);
-        setTimeout(() => {
-          setItemPicture4(require("../assets/images/wrong.png"));
-        }, 100);
-
-        setTimeout(() => {
-          fadeIn(state);
-        }, 150);
-
-        setTimeout(() => {
-          fadeIn(state);
-        }, 150);
-
-        setTimeout(() => {
-          fadeOut(state);
-        }, 500);
-
-        setTimeout(() => {
-          setItemPicture4(practiceItems[itemIndex].image4);
-        }, 600);
-
-        setTimeout(() => {
-          fadeIn(state);
-        }, 700);
-      }
+      });
+      
+     
+     
+      
     }
   };
+  
+  
+  useEffect(() => {
+    Audio.setAudioModeAsync({
+      allowsRecordingIOS: false,
+      staysActiveInBackground: false,
+      interruptionModeIOS: Audio.INTERRUPTION_MODE_IOS_DO_NOT_MIX,
+      playsInSilentModeIOS: true,
+      shouldDuckAndroid: true,
+      interruptionModeAndroid: Audio.INTERRUPTION_MODE_ANDROID_DO_NOT_MIX,
+      playThroughEarpieceAndroid: false
+    });
+    const status = {
+      shouldPlay: false
+    };
+     if (audio){
+         sound.loadAsync(audio, status, false);
+       } 
+  }, []);
+
+  const playSound = async () => {
+    console.log("audio:" + audio);
+    
+    await sound.playAsync();
+    await sound.setPositionAsync(0)
+    
+    
+  }
 
 
   const onNext = () => {
@@ -327,6 +390,7 @@ export default function PracticeItemList({ navigation }) {
     
     setTimeout(() => {fadeIn();}, 150);
     setDisabled(false);
+
   };
 
   const onPrevious = () => {
