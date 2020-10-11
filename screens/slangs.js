@@ -91,8 +91,8 @@ export default function Slangs({navigation}) {
 
 
   return (
-    <View style={globalStyles.container}>
-      <Container>
+    <View style={styles.container} >
+      
         <Header searchBar rounded>
           <Item>
             <Icon name="ios-search" />
@@ -105,7 +105,7 @@ export default function Slangs({navigation}) {
           <SlangItem item={item} pressHandler={pressHandler}  keyExtractor={(item, index) => index.toString()}/>
       )}/>
    
-      </Container>
+      
         {/* each item in 'data' is cycled through*/} 
     </View>
   );
@@ -114,8 +114,13 @@ export default function Slangs({navigation}) {
 
 const styles = StyleSheet.create({
  list:{
-  marginTop: 20,
+   alignSelf: 'center',
+    marginTop: 20,
   flex: 1,
- }
+ },
+ container: {
+  flex: 1,
+},
+
 });
 
