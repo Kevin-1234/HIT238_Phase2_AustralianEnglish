@@ -561,10 +561,10 @@ export default function PracticeItemList({ navigation }) {
           </CardItem>
         </Card>
         </Animated.View>
-
+        <Text style={{alignSelf: 'center', marginTop: 30, fontSize: 18, fontWeight: '600'}}>Slang word: <Text style={{color: '#b22222',fontSize: 38, fontWeight: '600'}}>{itemIndex + 1}</Text></Text>           
         <View style={styles.buttonRow}>
          
-
+                           
           <Button iconLeft  style={{marginHorizontal:50}} onPress={onPrevious}>
     <Icon name="arrow-back" />
     <Text>Previous</Text>
@@ -638,6 +638,6 @@ const styles = StyleSheet.create({
   buttonRow: {
     alignSelf: 'center',
     flexDirection: "row",
-    marginVertical: '15%',
+    marginVertical: '8%',
   },
 });
