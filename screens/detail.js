@@ -49,6 +49,9 @@ export default class Detail extends React.Component {
           'Down the Track'  : require('../assets/images/down.png'),
           'Go Down a Storm'  : require('../assets/images/go.png'),
           'Draw a Blank on Something'  : require('../assets/images/draw.png'),
+          "Have Your Finger in Many Pies"  : require('../assets/images/manypies.jpg'),
+          "Spill the Beans"  : require('../assets/images/spillbeans.jpg'),
+    
         };
 
         this.audios = { 

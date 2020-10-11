@@ -35,7 +35,21 @@ export default function Home({navigation}) {
       key: '5',
       definition: "The expression 'to walk a mile in someone's shoes' means to consider someone else's feelings or experiences or challenges or thought process, to understand what it is like for this person.",
       imageL: "assets/images/walk.png"
-    }
+    },
+    {
+      title: "Have Your Finger in Many Pies",
+      key: '6',
+      definition: "If you have your fingers in many pies, if you have a finger in every pie, It means that you're involved in many, sometimes too many, different things, you're involved in a lot of different activities or maybe you know about a lot of different things going on.",
+      imageL: "assets/images/fingerspies.png"
+    },
+    {
+      title: "Spill the Beans",
+      key: '7',
+      definition: "If you spill the beans, you reveal secret information accidentally or sometimes maliciously, you know, because you're being nasty, and often it ruins a surprise or another plan that someone has. You've revealed information and it's ruined a surprise. You've spilled the beans.",
+      imageL: "assets/images/spillbeans.jpg"
+    },
+   
+
 
   ]
 
