@@ -15,7 +15,7 @@ export default function Practice({navigation}) {
     return (
         <View style={styles.container}>
            
-         <Text style={styles.slogan}>You have learned <Text style={styles.emphasize}>8</Text> slang words</Text>
+         <Text style={styles.slogan}>You have learned <Text style={styles.emphasize}>3</Text> slang words</Text>
           <Button large rounded style={styles.buttons} onPress={() => startPractice()}>
             <Text>Start practicing</Text>
           </Button>
@@ -29,13 +29,13 @@ export default function Practice({navigation}) {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#fff',
+        
         alignItems: 'center',
         justifyContent: 'center',
       },
       slogan:{
-        fontSize: 20,
-        marginBottom: 30
+        fontSize: 30,
+        marginBottom: 70
       },
       emphasize:{
         fontSize: 52,
