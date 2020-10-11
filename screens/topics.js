@@ -83,10 +83,11 @@ export default function Home({navigation}) {
     // </ImageBackground>
 
     <Container>
-        <Header />
-        <View>
+        
+        
 
         <DeckSwiper
+            
             dataSource={topics}
             renderItem={item => (
 
@@ -120,15 +121,13 @@ export default function Home({navigation}) {
 
 
 
-        </View>
+        
       </Container>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    padding: 20,
-  },
+  
 
   list:{
     marginTop: 20,

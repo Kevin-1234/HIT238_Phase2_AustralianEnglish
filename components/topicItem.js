@@ -27,9 +27,8 @@ export default function TopicItem({item, pressHandler}) {
   //   <Button onPress={() => pressHandler(item)}
   //    title='Start'/>
   // </Card>
-  
-  
-  <Card style={{ elevation: 2 }}>
+
+  <Card style={{ elevation: 2, marginTop: 100 }}>
     <CardItem>
       
         
