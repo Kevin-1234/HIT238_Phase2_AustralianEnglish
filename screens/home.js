@@ -8,7 +8,7 @@ export default function Home({navigation}) {
 
 // button functions to navigate to each screen  
 const slangsButton = () => {   
-    navigation.push('Slangs');
+    navigation.push('Slang Words');
   }
 
 const phrasesButton = () => {   

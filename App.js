@@ -34,7 +34,7 @@ const HomeStack = () => {
         headerTitleStyle: { fontSize: 18, fontWeight:'bold', color:"#f0ffff"}
       }} >
        <Stack.Screen name="Home" component={Home}/>
-       <Stack.Screen name="Slangs" component={Slangs}/>
+       <Stack.Screen name="Slang Words" component={Slangs}/>
        <Stack.Screen name="Phrases" component={Phrases}/>
        <Stack.Screen name="Topics" component={Topics}/>
        <Stack.Screen name="Detail" component={Detail}/>
