@@ -76,6 +76,7 @@ export default function PracticeItemList({ navigation }) {
   const fadeAnim2 = useRef(new Animated.Value(1)).current;
   const fadeAnim3 = useRef(new Animated.Value(1)).current;
   const fadeAnim4 = useRef(new Animated.Value(1)).current;
+  const fadeAnimItem = useRef(new Animated.Value(0)).current;
 
   // const fadeIn = () => {
   //     // Will change fadeAnim value to 1 in 5 seconds
@@ -128,6 +129,12 @@ export default function PracticeItemList({ navigation }) {
         toValue: 1,
         duration: 50,
       }).start();
+    }else{
+
+      Animated.timing(fadeAnimItem, {
+        toValue: 1,
+        duration: 100,
+      }).start();
     }
   };
 
@@ -149,6 +156,12 @@ export default function PracticeItemList({ navigation }) {
       }).start();
     } else if (state === itemPicture4) {
       Animated.timing(fadeAnim4, {
+        toValue: 0,
+        duration: 100,
+      }).start();
+    }else{
+
+      Animated.timing(fadeAnimItem, {
         toValue: 0,
         duration: 100,
       }).start();
@@ -292,6 +305,7 @@ export default function PracticeItemList({ navigation }) {
     }
   };
 
+
   const onNext = () => {
     if(itemIndex === practiceItems.length - 1)
     {
@@ -301,13 +315,17 @@ export default function PracticeItemList({ navigation }) {
 
       setItemIndex((itemIndex += 1));
     }
-    
-    setItemTtile(practiceItems[itemIndex].title);
+    fadeOut();
+    setTimeout(() => {
+      setItemTtile(practiceItems[itemIndex].title);
     setItemPicture1(practiceItems[itemIndex].image1);
     setItemPicture2(practiceItems[itemIndex].image2);
     setItemPicture3(practiceItems[itemIndex].image3);
     setItemPicture4(practiceItems[itemIndex].image4);
-    console.log(itemIndex);
+
+    },150);
+    
+    setTimeout(() => {fadeIn();}, 150);
   };
 
   const onPrevious = () => {
@@ -317,20 +335,32 @@ export default function PracticeItemList({ navigation }) {
 
       setItemIndex((itemIndex -= 1));
     }
-    
-    setItemTtile(practiceItems[itemIndex].title);
+    fadeOut();
+    setTimeout(() => {
+      setItemTtile(practiceItems[itemIndex].title);
     setItemPicture1(practiceItems[itemIndex].image1);
     setItemPicture2(practiceItems[itemIndex].image2);
     setItemPicture3(practiceItems[itemIndex].image3);
     setItemPicture4(practiceItems[itemIndex].image4);
-    console.log(itemIndex);
-    console.log(practiceItems.length - 1);
+
+    }, 150);
+    setTimeout(() => {fadeIn();}, 150);
+
   };
 
   return (
     <Container>
       <Content>
+      <Animated.View
+                    style={[
+                      styles.fadingContainer,
+                      {
+                        opacity: fadeAnimItem, 
+                      },
+                    ]}
+                  >
         <Card style={{ elevation: 3 }}>
+        
           <CardItem>
             <Left>
               <Body>
@@ -347,7 +377,7 @@ export default function PracticeItemList({ navigation }) {
               </Body>
             </Left>
           </CardItem>
-
+                  
           <Grid>
             <Row>
               <Col style={styles.column}>
@@ -444,10 +474,12 @@ export default function PracticeItemList({ navigation }) {
               </Col>
             </Row>
           </Grid>
+          
           <CardItem>
             <Text>Note:Choose the correct picture for the slang </Text>
           </CardItem>
         </Card>
+        </Animated.View>
 
         <View style={styles.buttonRow}>
          
@@ -504,7 +536,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
   },
   fadingContainer: {
-    backgroundColor: "powderblue",
+    
   },
   fadingText: {
     fontSize: 28,
