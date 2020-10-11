@@ -4,7 +4,7 @@ import { StyleSheet, View, Image, ImageBackground, TouchableOpacity } from 'reac
 import {globalStyles} from '../styles/global';
 import { WebView } from 'react-native-webview';
 import { Audio, Video } from "expo-av";
-import { Container, Header, Content, Button, Text } from 'native-base';
+import { Root, Container, Header, Content, Button, Text, Toast } from 'native-base';
 import AsyncStorage from '@react-native-community/async-storage';
 
 
@@ -29,7 +29,9 @@ export default class Detail extends React.Component {
       <Text style={globalStyles.titleText}>{navigation.getParam('definition', 'defultValue')}</Text>*/
       constructor(props){
         super(props);
-        
+        this.state = {
+          showToast: false
+        };
         this.itemTitle = this.props.route.params.title;
         // hard code the paths of images, videos and audios because 'require()' does not accept a variable
         this.images = { 
@@ -127,13 +129,26 @@ export default class Detail extends React.Component {
           newItemList.push( itemToSave );
         try { 
           await AsyncStorage.setItem(DBKey, JSON.stringify(newItemList))
-          console.log("Secucessfully saved!");
+          Toast.show({
+            text: "Secucessfully saved to the notebook!",
+            buttonText: "Okay",
+            type: "success"
+          })
+          
         } catch (e) {
           console.log("There was an error!");
           // saving error
         }
         }else{
-          console.log("The item has already been added to the nootebook");
+
+          
+          Toast.show({
+            text: "Item is already existed!",
+            buttonText: "Okay",
+            type: "warning"
+
+          })
+          
         }
 
       }
@@ -156,21 +171,37 @@ export default class Detail extends React.Component {
           newItemList = []
         }
       
-        
+        let ifExisted = false;
         newItemList.forEach(element => {         
           if (element.title === item.title){           
             let index = newItemList.indexOf(element);
             newItemList.splice(index, 1);
-            
+            ifExisted = true;
           }
         });
-        try { 
-          await AsyncStorage.setItem(DBKey, JSON.stringify(newItemList))
-          console.log("Secucessfully removed!");
-        } catch (e) {
-          console.log("There was an error!");
-          // saving error
+        if(!ifExisted){
+          Toast.show({
+            text: "Item is not existed in the notebook!",
+            buttonText: "Okay",
+            type: "warning"
+          })
+
+        }else{
+
+          try { 
+            await AsyncStorage.setItem(DBKey, JSON.stringify(newItemList))
+            Toast.show({
+              text: "Secucessfully removed from the notebook!",
+              buttonText: "Okay",
+              type: "success"
+            })
+            
+          } catch (e) {
+            console.log("There was an error!");
+            // saving error
+          } 
         }
+        
 
         }
       
@@ -188,12 +219,15 @@ render() {
         </TouchableOpacity>
 
     <Text style={[globalStyles.titleText, styles.definition]}>{this.props.route.params.definition}</Text>
+    <Root>
     
-    <View style={[styles.buttonRow]}>
+      
+      <View style={[styles.buttonRow]}>
     <Button 
     success
     style={styles.button}
-    onPress={() => this.storeData(this.props.route.params)}
+    onPress={() =>
+      this.storeData(this.props.route.params)}
     ><Text>Save</Text></Button> 
 
 <Button
@@ -203,6 +237,9 @@ style={styles.button}
  ><Text>Remove</Text></Button> 
 
     </View>
+    </Root>
+                       
+    
       
   
  
@@ -227,7 +264,9 @@ style={styles.button}
         isLooping
         style={{ width: '100%', height: 300 }}
         />
+        <Root>
         <View style={[styles.buttonRow]}>
+        
         <Button
         success
         style={styles.button}
@@ -241,7 +280,7 @@ style={styles.button}
     ><Text>Remove</Text></Button>
 
         </View>
-        
+        </Root>  
       </View>
     );
   }
@@ -253,6 +292,7 @@ style={styles.button}
     <Text style={[styles.title]}>{this.props.route.params.title})
     </Text>
         <Text style={[styles.definition]}>{this.props.route.params.definition}</Text>
+        <Root>
 <View style={[styles.buttonRow]}>
 
 <Button
@@ -267,6 +307,7 @@ style={styles.button}
     onPress={() => this.removeData(this.props.route.params)}
     ><Text>Remove</Text></Button>
 </View>
+</Root>
         
       </View>
       );
