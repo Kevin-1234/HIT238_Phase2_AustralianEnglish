@@ -3,8 +3,8 @@ import {
   StyleSheet,
   Image,
   TouchableOpacity,
-  Animated,
-  Button,
+  Animated
+
 } from "react-native";
 import {
   Container,
@@ -19,6 +19,7 @@ import {
   Left,
   Body,
   Icon,
+  Button,
 } from "native-base";
 import { Col, Row, Grid } from "react-native-easy-grid";
 
@@ -47,26 +48,28 @@ export default function PracticeItemList({ navigation }) {
       image3: require("../assets/images/avotest-cucumber.jpg"),
       image4Title: "Watermelon",
       image4: require("../assets/images/avotest-watermelon.jpg"),
-      imageCorrect: require("../assets/images/tick.png"),
-      imageWrong: require("../assets/images/wrong.png"),
     },
     {
       title: "Dead Horse",
       key: "2",
-      definition:
-        "It means tomato sauce, which is any of a very large number of sauces made primarily from tomatoes.",
-      imageS: require("../assets/images/sb_deadhorse.png"),
-      imageL: require("../assets/images/l_deadhorse.png"),
-      audio: "../assets/audios/deadhorse.mp3",
+      image1Title: "dh",
+      image1: require("../assets/images/deadhorsetest-dh.jpg"),
+      image2Title: "Red Chilli",
+      image2: require("../assets/images/deadhorsetest-redchilli.jpg"),
+      image3Title: "Strawberry Sauce",
+      image3: require("../assets/images/deadhorsetest-strawberrysauce.jpg"),
+      image4Title: "Dead Horse",
+      image4: require("../assets/images/deadhorsetest-tomatosauce.jpg"),
     },
   ]);
   var [itemIndex, setItemIndex] = useState(0);
   const [disabled, setDisabled] = useState(false);
 
-  const [itemPicture1, setItemPicture1] = useState(practiceItems[0].image1);
-  const [itemPicture2, setItemPicture2] = useState(practiceItems[0].image2);
-  const [itemPicture3, setItemPicture3] = useState(practiceItems[0].image3);
-  const [itemPicture4, setItemPicture4] = useState(practiceItems[0].image4);
+  const [itemTtile, setItemTtile] = useState(practiceItems[itemIndex].title);
+  const [itemPicture1, setItemPicture1] = useState(practiceItems[itemIndex].image1);
+  const [itemPicture2, setItemPicture2] = useState(practiceItems[itemIndex].image2);
+  const [itemPicture3, setItemPicture3] = useState(practiceItems[itemIndex].image3);
+  const [itemPicture4, setItemPicture4] = useState(practiceItems[itemIndex].image4);
   
 
   const fadeAnim1 = useRef(new Animated.Value(1)).current;
@@ -153,7 +156,7 @@ export default function PracticeItemList({ navigation }) {
   };
 
   const switchPicture = (itemTitle, state) => {
-    if (itemTitle === practiceItems[0].title) {
+    if (itemTitle === practiceItems[itemIndex].title) {
 
       if (state === itemPicture1) {
         fadeOut(state);
@@ -195,7 +198,7 @@ export default function PracticeItemList({ navigation }) {
       }
 
       setDisabled(true);
-      
+
     } else {
       if (state === itemPicture1) {
         fadeOut(state);
@@ -212,7 +215,7 @@ export default function PracticeItemList({ navigation }) {
         }, 500);
 
         setTimeout(() => {
-          setItemPicture1(practiceItems[0].image1);
+          setItemPicture1(practiceItems[itemIndex].image1);
         }, 600);
 
         setTimeout(() => {
@@ -233,7 +236,7 @@ export default function PracticeItemList({ navigation }) {
         }, 500);
 
         setTimeout(() => {
-          setItemPicture2(practiceItems[0].image2);
+          setItemPicture2(practiceItems[itemIndex].image2);
         }, 600);
 
         setTimeout(() => {
@@ -254,7 +257,7 @@ export default function PracticeItemList({ navigation }) {
         }, 500);
 
         setTimeout(() => {
-          setItemPicture3(practiceItems[0].image3);
+          setItemPicture3(practiceItems[itemIndex].image3);
         }, 600);
 
         setTimeout(() => {
@@ -279,7 +282,7 @@ export default function PracticeItemList({ navigation }) {
         }, 500);
 
         setTimeout(() => {
-          setItemPicture4(practiceItems[0].image4);
+          setItemPicture4(practiceItems[itemIndex].image4);
         }, 600);
 
         setTimeout(() => {
@@ -290,8 +293,38 @@ export default function PracticeItemList({ navigation }) {
   };
 
   const onNext = () => {
-    setItemIndex((itemIndex += 1));
+    if(itemIndex === practiceItems.length - 1)
+    {
+      setItemIndex((itemIndex = 0));
+
+    }else{
+
+      setItemIndex((itemIndex += 1));
+    }
+    
+    setItemTtile(practiceItems[itemIndex].title);
+    setItemPicture1(practiceItems[itemIndex].image1);
+    setItemPicture2(practiceItems[itemIndex].image2);
+    setItemPicture3(practiceItems[itemIndex].image3);
+    setItemPicture4(practiceItems[itemIndex].image4);
     console.log(itemIndex);
+  };
+
+  const onPrevious = () => {
+    if (itemIndex === 0){    
+      setItemIndex((itemIndex = practiceItems.length - 1));
+    }else{
+
+      setItemIndex((itemIndex -= 1));
+    }
+    
+    setItemTtile(practiceItems[itemIndex].title);
+    setItemPicture1(practiceItems[itemIndex].image1);
+    setItemPicture2(practiceItems[itemIndex].image2);
+    setItemPicture3(practiceItems[itemIndex].image3);
+    setItemPicture4(practiceItems[itemIndex].image4);
+    console.log(itemIndex);
+    console.log(practiceItems.length - 1);
   };
 
   return (
@@ -308,7 +341,7 @@ export default function PracticeItemList({ navigation }) {
                     fontWeight: "600",
                   }}
                 >
-                  Dead Horse
+                  {itemTtile}
                 </Text>
                 <Text note></Text>
               </Body>
@@ -322,7 +355,7 @@ export default function PracticeItemList({ navigation }) {
                   disabled={disabled}
                   activeOpacity={1.0}
                   onPress={() =>
-                    switchPicture(practiceItems[0].image1Title, itemPicture1)
+                    switchPicture(practiceItems[itemIndex].image1Title, itemPicture1)
                   }
                 >
                   <Animated.View
@@ -345,7 +378,7 @@ export default function PracticeItemList({ navigation }) {
                   disabled={disabled}
                   activeOpacity={1.0}
                   onPress={() =>
-                    switchPicture(practiceItems[0].image2Title, itemPicture2)
+                    switchPicture(practiceItems[itemIndex].image2Title, itemPicture2)
                   }
                 >
                   <Animated.View
@@ -369,7 +402,7 @@ export default function PracticeItemList({ navigation }) {
                   disabled={disabled}
                   activeOpacity={1.0}
                   onPress={() =>
-                    switchPicture(practiceItems[0].image3Title, itemPicture3)
+                    switchPicture(practiceItems[itemIndex].image3Title, itemPicture3)
                   }
                 >
                   <Animated.View
@@ -392,7 +425,7 @@ export default function PracticeItemList({ navigation }) {
                   disabled={disabled}
                   activeOpacity={1.0}
                   onPress={() =>
-                    switchPicture(practiceItems[0].image4Title, itemPicture4)
+                    switchPicture(practiceItems[itemIndex].image4Title, itemPicture4)
                   }
                 >
                   <Animated.View
@@ -417,7 +450,16 @@ export default function PracticeItemList({ navigation }) {
         </Card>
 
         <View style={styles.buttonRow}>
-          <Button title="next" onPress={onNext} />
+         
+
+          <Button iconLeft  style={{marginHorizontal:30}} onPress={onPrevious}>
+    <Icon name="arrow-back" />
+    <Text>Previous</Text>
+  </Button>
+  <Button iconRight style={{marginHorizontal:30}} onPress={onNext}>
+    <Icon name="arrow-forward" style={{paddingLeft: 34, paddingRight:0}}/>
+    <Text>Next</Text>
+  </Button>
         </View>
       </Content>
       {/* <View style={{ flexDirection: "row", flex: 1, position: "absolute", bottom: 50, left: 0, right: 0, justifyContent: 'space-between', padding: 15 }}>
@@ -470,7 +512,8 @@ const styles = StyleSheet.create({
     margin: 10,
   },
   buttonRow: {
+    alignSelf: 'center',
     flexDirection: "row",
-    marginVertical: 16,
+    marginVertical: '15%',
   },
 });
