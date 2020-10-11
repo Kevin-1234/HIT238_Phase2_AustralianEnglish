@@ -62,6 +62,18 @@ export default function PracticeItemList({ navigation }) {
       image4Title: "Dead Horse",
       image4: require("../assets/images/deadhorsetest-tomatosauce.jpg"),
     },
+    {
+      title: "Dog Eye",
+      key: "2",
+      image1Title: "de",
+      image1: require("../assets/images/dogeyetest-de.jpg"),
+      image2Title: "Litchi",
+      image2: require("../assets/images/dogeyetest-litchi.jpg"),
+      image3Title: "Dog Eye",
+      image3: require("../assets/images/dogeyetest-meatpie.jpg"),
+      image4Title: "Pearl",
+      image4: require("../assets/images/dogeyetest-pearl.jpg"),
+    },
   ]);
   var [itemIndex, setItemIndex] = useState(0);
   const [disabled, setDisabled] = useState(false);
