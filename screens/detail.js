@@ -41,6 +41,9 @@ export default class Detail extends React.Component {
           'Dead Horse'  : require('../assets/images/l_deadhorse.png'),
           'Flat White'  : require('../assets/images/l_flatwhite.png'),
           'Banger'  : require('../assets/images/l_banger.png'),
+          'Esky'  : require('../assets/images/l_esky.png'),
+          'Cuppa'  : require('../assets/images/l_cuppa.png'),
+          'Fairy Floss'  : require('../assets/images/l_fairyfloss.png'),
           "Walking a Mile in Someone's Shoes"  : require('../assets/images/walk.png'),
           'Throw Caution to the Wind'  : require('../assets/images/throw.png'),
           'Down the Track'  : require('../assets/images/down.png'),
@@ -55,6 +58,9 @@ export default class Detail extends React.Component {
           'Dead Horse'  : require('../assets/audios/deadhorse.mp3'),
           'Flat White'  : require('../assets/audios/flatwhite.mp3'),
           'Banger'  : require('../assets/audios/banger.mp3'),
+          'Esky'  : require('../assets/audios/esky.mp3'),
+          'Cuppa'  : require('../assets/audios/cuppa.mp3'),
+          'Fairy Floss'  : require('../assets/audios/fairyfloss.mp3'),
         };
 
       

@@ -61,6 +61,31 @@ export default function Slangs({navigation}) {
         audio: "../assets/audios/flatwhite.mp3"
     },
 
+  {
+    title: "Esky",
+    key: '7',
+    definition: "A portable insulated container for keeping food and drink cool.",
+    imageS: "../assets/images/sb_esky.png",
+    imageL: "../assets/images/l_esky.png",
+    audio: "../assets/audios/esky.mp3"
+},
+{
+  title: "Cuppa",
+  key: '8',
+  definition: "A cup of tea.",
+  imageS: "../assets/images/sb_cuppa.png",
+  imageL: "../assets/images/l_cuppa.png",
+  audio: "../assets/audios/cuppa.mp3"
+},
+{
+  title: "Fairy Floss",
+  key: '9',
+  definition: "A very light fluffy confection made from coloured spun sugar, usually held on a stick.",
+  imageS: "../assets/images/sb_fairyfloss.png",
+  imageL: "../assets/images/l_fairyfloss.png",
+  audio: "../assets/audios/fairyfloss.mp3"
+},
+
   ];
   const [slangList, setSlangList] = useState(slangData);
   const [search, setSearch] = useState('');
@@ -112,14 +137,17 @@ export default function Slangs({navigation}) {
 }
 
 
+
 const styles = StyleSheet.create({
  list:{
    alignSelf: 'center',
+   
     marginTop: 20,
   flex: 1,
  },
  container: {
   flex: 1,
+  justifyContent: 'space-around',
 },
 
 });

@@ -14,6 +14,9 @@ export default function SlangItem({item, pressHandler}) {
     'Dead Horse'  : require('../assets/images/sb_deadhorse.png'),
     'Flat White'  : require('../assets/images/sb_flatwhite.png'),
     'Banger'  : require('../assets/images/sb_banger.png'),
+    'Esky'  : require('../assets/images/sb_esky.png'),
+    'Cuppa'  : require('../assets/images/sb_cuppa.png'),
+    'Fairy Floss'  : require('../assets/images/sb_fairyfloss.png'),
   };
   const image = images[itemTitle];
 
