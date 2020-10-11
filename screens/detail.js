@@ -1,9 +1,10 @@
 import { BaseRouter } from '@react-navigation/native';
 import React from 'react';
-import { StyleSheet, View, Text, Image, ImageBackground, TouchableOpacity, Button } from 'react-native';
+import { StyleSheet, View, Image, ImageBackground, TouchableOpacity } from 'react-native';
 import {globalStyles} from '../styles/global';
 import { WebView } from 'react-native-webview';
 import { Audio, Video } from "expo-av";
+import { Container, Header, Content, Button, Text } from 'native-base';
 import AsyncStorage from '@react-native-community/async-storage';
 
 
@@ -187,19 +188,24 @@ render() {
         </TouchableOpacity>
 
     <Text style={[globalStyles.titleText, styles.definition]}>{this.props.route.params.definition}</Text>
-    <Button
+    
+    <View style={[styles.buttonRow]}>
+    <Button 
+    success
+    style={styles.button}
     onPress={() => this.storeData(this.props.route.params)}
-    title="Save"
-    color="#841584"
-    accessibilityLabel="Learn more about this purple button"
-  />
+    ><Text>Save</Text></Button> 
 
 <Button
+danger
+style={styles.button}
     onPress={() => this.removeData(this.props.route.params)}
-    title="Remove"
-    color="#841584"
-    accessibilityLabel="Learn more about this purple button"
-  />
+ ><Text>Remove</Text></Button> 
+
+    </View>
+      
+  
+ 
       </View>
       
       
@@ -221,19 +227,21 @@ render() {
         isLooping
         style={{ width: '100%', height: 300 }}
         />
+        <View style={[styles.buttonRow]}>
         <Button
+        success
+        style={styles.button}
     onPress={() => this.storeData(this.props.route.params)}
-    title="Save"
-    color="#841584"
-    accessibilityLabel="Learn more about this purple button"
-  />
+    ><Text>Save</Text></Button>
 
 <Button
+danger
+style={styles.button}
     onPress={() => this.removeData(this.props.route.params)}
-    title="Remove"
-    color="#841584"
-    accessibilityLabel="Learn more about this purple button"
-  />
+    ><Text>Remove</Text></Button>
+
+        </View>
+        
       </View>
     );
   }
@@ -245,20 +253,21 @@ render() {
     <Text style={[styles.title]}>{this.props.route.params.title})
     </Text>
         <Text style={[styles.definition]}>{this.props.route.params.definition}</Text>
-
-        <Button
-    onPress={() => this.storeData(this.props.route.params)}
-    title="Save"
-    color="#841584"
-    accessibilityLabel="Learn more about this purple button"
-  />
+<View style={[styles.buttonRow]}>
 
 <Button
+success
+style={styles.button}
+    onPress={() => this.storeData(this.props.route.params)}
+    ><Text>Save</Text></Button>
+
+<Button
+danger
+style={styles.button}
     onPress={() => this.removeData(this.props.route.params)}
-    title="Remove"
-    color="#841584"
-    accessibilityLabel="Learn more about this purple button"
-  />
+    ><Text>Remove</Text></Button>
+</View>
+        
       </View>
       );
   }
@@ -290,5 +299,18 @@ const styles = StyleSheet.create({
   width:48,
   height: 48,
   },
-
+  buttonRow: {
+    
+    alignSelf: 'center',
+    
+    flexDirection: "row",
+    marginVertical: '20%',
+  },
+  button:{
+    marginHorizontal: 50,
+    width: 100,
+    justifyContent:'center',
+    
+    
+  },
 })
