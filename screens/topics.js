@@ -1,8 +1,9 @@
 import React from 'react';
-import { StyleSheet,  FlatList, TouchableHighlight, Image, ImageBackground } from 'react-native';
+import { StyleSheet, LogBox, FlatList, TouchableHighlight, Image, ImageBackground } from 'react-native';
 import {globalStyles} from '../styles/global';
 import TopicItem from '../components/topicItem';
 import { Container, Header, View, DeckSwiper, Card, CardItem, Thumbnail, Text, Left, Body, Icon } from 'native-base';
+console.disableYellowBox = true;
 
 
 export default function Home({navigation}) {
