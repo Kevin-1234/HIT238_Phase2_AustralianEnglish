@@ -118,8 +118,8 @@ export default function Home({navigation}) {
             
           />
 
-
-
+              
+<Text style={{position: "absolute", bottom: 80, alignSelf: 'center', fontSize:20, fontWeight: '600', color: '#b22222'}}>Swipe the card left or right to switch the topic</Text>
 
         
       </Container>
