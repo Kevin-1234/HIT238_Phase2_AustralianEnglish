@@ -28,8 +28,8 @@ export default function TopicItem({item, pressHandler}) {
   //    title='Start'/>
   // </Card>
 
-  <Card style={{ elevation: 2, marginTop: 100 }}>
-    <CardItem>
+  <Card style={{ elevation: 2, marginTop: 100, width: '90%', alignSelf:'center',borderRadius: 8, backgroundColor: '#dcdcdc'}}>
+    <CardItem style={{backgroundColor: '#dcdcdc', borderTopLeftRadius: 8, borderTopRightRadius: 8 }}>
       
         
         <Body>
@@ -46,16 +46,16 @@ export default function TopicItem({item, pressHandler}) {
       <Image style={{ height: 300, flex: 1 }} source={item.image} />
     </CardItem>
     </TouchableHighlight>
-    <CardItem>
+    <CardItem style={{backgroundColor: '#dcdcdc'}}>
       <Text>{item.description}</Text>
     </CardItem>
-    <CardItem>
-              <Left>
-                <Button textStyle={{color: '#87838B'}} onPress={() => pressHandler(item)}>
+    <CardItem style={{backgroundColor: '#dcdcdc', borderBottomLeftRadius: 8, borderBottomRightRadius: 8, alignSelf: 'center'}}>
+              
+                <Button textStyle={{color: '#87838B', alignSelf: 'center'}} onPress={() => pressHandler(item)}>
                   <Icon name="play" />
                   <Text>Start Learning</Text>
                 </Button>
-              </Left>
+              
             </CardItem>
   </Card>
 
@@ -85,7 +85,7 @@ const styles = StyleSheet.create({
   itemTitle: { 
     fontFamily: 'Roboto-bold',
     color: '#000000',
-    fontSize: 28, 
+    fontSize: 38, 
     alignSelf: 'center', 
   },
 
