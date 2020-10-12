@@ -43,7 +43,7 @@ export default function TopicNote({navigation}) {
      }else{
 
         return (
-            <View style={globalStyles.container}>
+            <View style={styles.container}>
       
         {/* each item in 'data' is cycled through*/}
       <FlatList style={styles.list} numColumns={1} data={topicList} renderItem={({ item }) => (
@@ -58,6 +58,9 @@ export default function TopicNote({navigation}) {
 }
 
 const styles = StyleSheet.create({
+    container:{
+        flex: 1
+    },
     list:{
      marginTop: 20,
      flex: 1,
