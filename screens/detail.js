@@ -5,6 +5,7 @@ import {globalStyles} from '../styles/global';
 import { WebView } from 'react-native-webview';
 import { Audio, Video } from "expo-av";
 import { Root, Container, Header, Content, Button, Text, Toast } from 'native-base';
+import { LinearGradient } from 'expo-linear-gradient';
 import AsyncStorage from '@react-native-community/async-storage';
 
 
@@ -260,7 +261,19 @@ style={styles.button}
   }else if (this.props.route.params.videoUrl){ 
     return(
       <View style={styles.container}> 
+      <LinearGradient
+        colors={['rgba(0,0,0,0.8)', 'transparent']}
+        style={{
+          position: 'absolute',
+          left: 0,
+          right: 0,
+          top: 0,
+          height: '120%',
+        }}
+      />
+      <Text style={{color: '#f8f8ff', alignSelf: 'center', fontSize: 38, fontWeight: '600', paddingTop: '15%'}}>{this.itemTitle}</Text>
         <Video
+        
         ref={(ref) => {this.player = ref}}
         fullscreen
         source={this.video}
@@ -271,7 +284,7 @@ style={styles.button}
         resizeMode="cover"
         shouldPlay
         isLooping
-        style={{ width: '100%', height: 300 }}
+        style={{ width: '100%', height: 300, marginTop: '18%', borderRadius: 6, alignSelf:'center'}}
         />
         <Root>
         <View style={[styles.buttonRow]}>
@@ -325,6 +338,11 @@ style={styles.button}
 }
 
 const styles = StyleSheet.create({
+  container:{
+    flex: 1,
+    
+
+  },
   image: {
     marginTop: '10%',
     width: '100%',
