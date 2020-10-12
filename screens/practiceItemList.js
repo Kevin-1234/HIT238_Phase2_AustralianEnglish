@@ -12,10 +12,8 @@ import {
   Header,
   View,
   Content,
-  DeckSwiper,
   Card,
   CardItem,
-  Thumbnail,
   Text,
   Left,
   Body,
@@ -24,17 +22,6 @@ import {
 } from "native-base";
 import { Col, Row, Grid } from "react-native-easy-grid";
 
-slangList = [
-  {
-    title: "Mash",
-    key: "1",
-    definition:
-      "Potatoes that have been boiled and crushed into a soft mass, often with butter and milk.",
-    imageS: require("../assets/images/sb_mash.png"),
-    imageL: require("../assets/images/l_mash.png"),
-    audio: "../assets/audios/mash.mp3",
-  },
-];
 
 export default function PracticeItemList({ navigation }) {
   const [practiceItems, setPracticeItems] = useState([
@@ -94,35 +81,6 @@ export default function PracticeItemList({ navigation }) {
   const [audio, setAudio] = useState(require('../assets/audios/correct.mp3'));
   const [sound, setSound] = useState(new Audio.Sound());
 
-  // const fadeIn = () => {
-  //     // Will change fadeAnim value to 1 in 5 seconds
-  //     Animated.timing(fadeAnim, {
-  //       toValue: 1,
-  //       duration: 100,
-  //     }).start();
-  //     //setItemPicture(require("../assets/images/sb_mash.png"));
-  //   };
-
-  //   const fadeOut = (state) => {
-
-  //       Animated.timing(fadeAnim, {
-  //       toValue: 0,
-  //       duration: 100,
-  //     }).start();
-
-  // await setItemPicture(require("../assets/images/sb_deadhorse.png"));
-  // await Animated.timing(fadeAnim, {
-  //     toValue: 1,
-  //     duration: 150,
-  //   }).start();
-
-  //};
-
-  //   const promiseA = new Promise(fadeOut);
-  //   const switchPicture = async () => {
-  //     await promiseA.then(setItemPicture(require("../assets/images/sb_deadhorse.png")));
-
-  //   }
 
   const fadeIn = (state) => {
     if (state === itemPicture1) {
@@ -240,9 +198,7 @@ export default function PracticeItemList({ navigation }) {
 
     } else {
       
-      //setAudio(require('../assets/audios/wrong.mp3'));
-      //setSound(new Audio.Sound());
-      //await sound.unloadAsync();
+  
       await sound.unloadAsync().then( async () => {
         await sound.loadAsync(require('../assets/audios/wrong.mp3')).then(() => {
 
@@ -575,16 +531,6 @@ export default function PracticeItemList({ navigation }) {
   </Button>
         </View>
       </Content>
-      {/* <View style={{ flexDirection: "row", flex: 1, position: "absolute", bottom: 50, left: 0, right: 0, justifyContent: 'space-between', padding: 15 }}>
-  <Button iconLeft onPress={() => this._deckSwiper._root.swipeLeft()}>
-    <Icon name="arrow-back" style={{paddingRight: 14}}/>
-    <Text>Swipe Left</Text>
-  </Button>
-  <Button iconRight onPress={() => this._deckSwiper._root.swipeRight()}>
-    <Icon name="arrow-forward" style={{paddingLeft: 14}}/>
-    <Text>Swipe Right</Text>
-  </Button>
-</View> */}
     </Container>
   );
 }

@@ -1,10 +1,9 @@
-import { BaseRouter } from '@react-navigation/native';
+
 import React from 'react';
 import { StyleSheet, View, Image, ImageBackground, TouchableOpacity } from 'react-native';
 import {globalStyles} from '../styles/global';
-import { WebView } from 'react-native-webview';
 import { Audio, Video } from "expo-av";
-import { Root, Container, Header, Content, Button, Text, Toast } from 'native-base';
+import { Root, Button, Text, Toast } from 'native-base';
 import { LinearGradient } from 'expo-linear-gradient';
 import AsyncStorage from '@react-native-community/async-storage';
 

@@ -1,5 +1,5 @@
 import React, {useState, useEffect } from 'react';
-import { StyleSheet, View, FlatList, Text, Button, TouchableHighlight, ImageBackground } from 'react-native';
+import { StyleSheet, View, FlatList, Text} from 'react-native';
 import {globalStyles} from '../styles/global';
 import AsyncStorage from '@react-native-community/async-storage';
 import SlangItem from '../components/slangItem';

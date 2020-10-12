@@ -1,8 +1,7 @@
 import React, {useState}from 'react';
-import { StyleSheet, FlatList, TouchableOpacity } from 'react-native';
-import {globalStyles} from '../styles/global';
+import { StyleSheet, FlatList} from 'react-native';
 import SlangItem from '../components/slangItem';
-import { Container, Header, View, List, Item, Input, Button, DeckSwiper, Card, CardItem, Thumbnail, Text, Left, Body, Icon } from 'native-base';
+import { Header, View, Item, Input, Icon } from 'native-base';
 
 
 
@@ -131,7 +130,7 @@ export default function Slangs({navigation}) {
       )}/>
    
       
-        {/* each item in 'data' is cycled through*/} 
+        
     </View>
   );
 }

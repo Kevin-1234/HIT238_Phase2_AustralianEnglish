@@ -1,8 +1,8 @@
 import React from 'react';
-import { StyleSheet, LogBox, FlatList, TouchableHighlight, Image, ImageBackground } from 'react-native';
-import {globalStyles} from '../styles/global';
+import { StyleSheet} from 'react-native';
+
 import TopicItem from '../components/topicItem';
-import { Container, Header, View, DeckSwiper, Card, CardItem, Thumbnail, Text, Left, Body, Icon } from 'native-base';
+import { Container, DeckSwiper, Text} from 'native-base';
 console.disableYellowBox = true;
 
 
@@ -62,26 +62,10 @@ export default function Home({navigation}) {
     );
   }
 
-  // const itemTitle = item.title;
-  // const images = {
-  //   'At the resturant'  : require('../assets/images/attheresturant.jpg'),
-  //   'Families'  : require('../assets/images/families.jpg'),
-  //   'Holidays'  : require('../assets/images/holidays.jpg'),
-  //   'In the kitchen'  : require('../assets/images/inthekitchen.jpg'),
-  //   'Travelling'  : require('../assets/images/travelling.jpg'),
-  //   'The weather'  : require('../assets/images/theweather.jpg'),
-  // };
-  // const image = images[itemTitle];
+  
 
   return (
-    // <ImageBackground source={require('../assets/images/phrases-bg.jpg')} style={styles.backgroundImage}>
-    //   <View style={globalStyles.container}>
-    //     {/* each item in 'data' is cycled through*/}
-    //     <FlatList style={styles.list} data={topics} renderItem={({ item }) => (
-    //       <TopicItem item={item}  pressHandler={pressHandler} />
-    //     )} />
-    //   </View>
-    // </ImageBackground>
+    
 
     <Container>
         
@@ -94,28 +78,7 @@ export default function Home({navigation}) {
 
               <TopicItem item={item} pressHandler={pressHandler} />
             )}
-              // <TouchableHighlight activeOpacity={0.6}
-              // underlayColor="#778899"
-              // style={styles.item} onPress={() => pressHandler(item)}>
-              // <Card style={{ elevation: 3 }}>
-              //   <CardItem>
-              //     <Left>
-              //       <Thumbnail source={item.image} />
-              //       <Body>
-              //         <Text>{item.title}</Text>
-              //         <Text note>NativeBase</Text>
-              //       </Body>
-              //     </Left>
-              //   </CardItem>
-              //   <CardItem cardBody>
-              //     <Image style={{ height: 300, flex: 1 }} source={item.image} />
-              //   </CardItem>
-              //   <CardItem>
-              //     <Icon name="heart" style={{ color: '#ED4A6A' }} />
-              //     <Text>{item.description}</Text>
-              //   </CardItem>
-              // </Card>
-              // </TouchableHighlight>
+              
             
           />
 

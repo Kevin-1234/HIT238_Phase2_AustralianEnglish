@@ -1,6 +1,6 @@
 import React from 'react';
-import { StyleSheet, View, Text, Button, TouchableHighlight, ImageBackground,TouchableOpacity, Image } from 'react-native';
-import {globalStyles} from '../styles/global';
+import { StyleSheet, View, Text, ImageBackground,TouchableOpacity} from 'react-native';
+
 
 export default function Notebook({navigation}) {
     const slangsButton = () => {   

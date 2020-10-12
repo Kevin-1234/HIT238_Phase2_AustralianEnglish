@@ -1,10 +1,8 @@
-import React, {useState} from 'react';
+import React from 'react';
 import { StyleSheet, View} from 'react-native';
-import {globalStyles} from '../styles/global';
-import { Container, Header, Content, Button, Text } from 'native-base';
-import { color } from 'react-native-reanimated';
+import { Button, Text } from 'native-base';
 export default function Practice({navigation}) {
-    const [slangList, setSlangList] = useState(  );
+    
    
     const startPractice = () => {
         return (

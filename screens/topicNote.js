@@ -1,7 +1,7 @@
 import React, {useState, useEffect } from 'react';
-import { StyleSheet, FlatList, Button, TouchableHighlight, ImageBackground } from 'react-native';
-import {globalStyles} from '../styles/global';
-import { Container, Header, View, DeckSwiper, Card, CardItem, Thumbnail, Text, Left, Body, Icon } from 'native-base';
+import { StyleSheet, FlatList} from 'react-native';
+
+import { View, Text} from 'native-base';
 import AsyncStorage from '@react-native-community/async-storage';
 import TopicItem from '../components/topicItem';
 

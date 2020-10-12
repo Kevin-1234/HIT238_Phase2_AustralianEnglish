@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Text, Button, TouchableHighlight, ImageBackground } from 'react-native';
+import { StyleSheet, View, Text, TouchableHighlight, ImageBackground } from 'react-native';
 import {globalStyles} from '../styles/global';
 
 

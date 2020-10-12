@@ -21,7 +21,6 @@ import PracticeItemList from './screens/practiceItemList';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
-const Drawer = createDrawerNavigator();
 const Stack = createStackNavigator();
 const BottomTab = createMaterialBottomTabNavigator();
 
