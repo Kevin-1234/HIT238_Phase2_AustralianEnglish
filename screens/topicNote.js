@@ -26,10 +26,10 @@ export default function TopicNote({ navigation }) {
   const pressHandler = (item) => {
     return navigation.navigate("Detail", item);
   };
-  if (topicList.length <= 0) {
+  if (topicList === null) {
     return (
       <View>
-        <Text style={styles.heading}>No topic notes found!</Text>
+        <Text style={{fontSize:38, alignSelf: 'center', marginTop: '60%'}}>No topic notes found!</Text>
       </View>
     );
   } else {

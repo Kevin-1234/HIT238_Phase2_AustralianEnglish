@@ -24,10 +24,10 @@ export default function SlangNote({ navigation }) {
   const pressHandler = (item) => {
     return navigation.navigate("Detail", item);
   };
-  if (slangList.length <= 0) {
+  if (slangList === null) {
     return (
       <View>
-        <Text style={styles.heading}>No slang notes found!</Text>
+        <Text style={{fontSize:38, alignSelf: 'center', marginTop: '60%'}}>No slang notes found!</Text>
       </View>
     );
   } else {

@@ -31,10 +31,10 @@ export default function PhraseNote({ navigation }) {
     return navigation.navigate("Detail", item);
   };
 
-  if (phraseList.length <= 0) {
+  if (phraseList === null) {
     return (
       <View>
-        <Text style={styles.heading}>No phrase notes found!</Text>
+        <Text style={{fontSize:38, alignSelf: 'center', marginTop: '60%'}}>No phrase notes found!</Text>
       </View>
     );
   } else {
